@@ -1,2 +1,7 @@
 .dfx
 .vscode
+.DS_Store
+.Trashes
+Desktop.ini
+*.swp
+*.orig
