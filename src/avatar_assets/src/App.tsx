@@ -125,34 +125,34 @@ const App = () => {
         }}
       />
       {/* <ErrorBoundary> */}
-        <AppContext.Provider
-          value={{
-            authClient,
-            setAuthClient,
-            isAuthenticated,
-            setIsAuthenticated,
-            login,
-            logout,
-            actor,
-            profile,
-            updateProfile,
-          }}
-        >
-            <Router>
-              <RedirectManager />
-              <Layout>
-              <Header>
-                <div id="header-container">
-                  <p>1.435</p>
-                  <Route path="/manage">
-                    <Button type="text" id="logout" onClick={logout}>Log out</Button>
-                  </Route>
-                  <Route path="/create">
-                    <Button type="text" id="logout" onClick={logout}>Log out</Button>
-                  </Route>
-                </div>
-              </Header>
-              <Layout>
+      <AppContext.Provider
+        value={{
+          authClient,
+          setAuthClient,
+          isAuthenticated,
+          setIsAuthenticated,
+          login,
+          logout,
+          actor,
+          profile,
+          updateProfile,
+        }}
+      >
+        <Router>
+          <RedirectManager />
+          <Layout>
+            <Header>
+              <div id="header-container">
+                <p>1.435</p>
+                <Route path="/manage">
+                  <Button type="text" id="logout" onClick={logout}>Log out</Button>
+                </Route>
+                <Route path="/create">
+                  <Button type="text" id="logout" onClick={logout}>Log out</Button>
+                </Route>
+              </div>
+            </Header>
+            <Layout>
               <Sider>
                 <CreateProfile />
               </Sider>
@@ -160,11 +160,11 @@ const App = () => {
                 <Row>
                   <Switch>
                     <Route path="/" exact>
-                        <Home />
-                        <NotAuthenticated />            
+                      <Home />
+                      <NotAuthenticated />
                     </Route>
                     <Route path="/manage" exact>
-                      <ManageProfile />
+                      <Profile />
                     </Route>
                     <Route path="/create" exact>
                       <Profile />
@@ -172,11 +172,11 @@ const App = () => {
                   </Switch>
                 </Row>
               </Content>
-              </Layout>
-              <Footer>Footer</Footer>
-              </Layout>
-            </Router>
-        </AppContext.Provider>
+            </Layout>
+            <Footer>Footer</Footer>
+          </Layout>
+        </Router>
+      </AppContext.Provider>
       {/* </ErrorBoundary> */}
     </>
   );
