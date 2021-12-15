@@ -1,7 +1,5 @@
 import * as React from "react";
 import { _SERVICE } from "../../../declarations/avatar/avatar.did";
-import { Button, Text } from "@adobe/react-spectrum";
-import ImageProfile from "@spectrum-icons/workflow/ImageProfile";
 import { useHistory } from "react-router-dom";
 
 function Home() {

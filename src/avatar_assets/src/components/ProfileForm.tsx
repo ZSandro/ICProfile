@@ -1,10 +1,6 @@
-import {
-  ActionButton,
-  Form,
-  Heading,
-  TextArea,
-  TextField,
-} from "@adobe/react-spectrum";
+
+import { Form, Input, Button, Checkbox } from 'antd';
+
 import { ActorSubclass } from "@dfinity/agent";
 import React from "react";
 import {
@@ -66,9 +62,8 @@ class ProfileForm extends React.Component<Props> {
     const handleImage = this.handleImage.bind(this);
     return (
       <section>
-        <Heading level={1}>Create a Profile</Heading>
         <Form
-          onSubmit={(e) => {
+          onFinish={(e) => {
             e.preventDefault();
             handleSubmit();
           }}
@@ -77,39 +72,9 @@ class ProfileForm extends React.Component<Props> {
             onChange={handleImage}
             defaultImage={this.state.profile.image[0]}
           />
-          <TextField
-            label="First Name"
-            name="givenName"
-            value={givenName[0] || ""}
-            onChange={(value) => handleChange("givenName", value)}
-          />
-          <TextField
-            label="Last Name"
-            name="familyName"
-            value={familyName[0] || ""}
-            onChange={(value) => handleChange("familyName", value)}
-          />
-          <TextField
-            label="Profile Name"
-            name="displayName"
-            value={displayName[0] || ""}
-            onChange={(value) => handleChange("displayName", value)}
-          />
-          <TextField
-            label="Location"
-            name="location"
-            value={location[0] || ""}
-            onChange={(value) => handleChange("location", value)}
-          />
-          <TextArea
-            label="About"
-            name="about"
-            value={about[0] || ""}
-            onChange={(value) => handleChange("about", value)}
-          />
-          <ActionButton type="button" onPress={handleSubmit}>
+          <Button type="primary" onClick={handleSubmit}>
             Submit
-          </ActionButton>
+          </Button>
         </Form>
       </section>
     );

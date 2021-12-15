@@ -4,9 +4,38 @@ body {
     padding: 0;
     margin: 0;
 }
+.header-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 100px;
+}
+.logout {
+    position: absolute;
+    right: 100px;
+    left: 10px;
+    top: 20px;
+}
+.ant-layout-header,
+.ant-layout-footer {
+  color: #fff;
+  background: #7dbcea;
+}
+.ant-layout-footer {
+  line-height: 1.5;
+}
+.ant-layout-sider {
+  color: #fff;
+  height: 1000px;
+  background: #3ba0e9;
+}
+.ant-layout-content {
+  min-height: 120px;
+  color: #fff;
+  height: 1000px;
+  background: rgba(16, 142, 233, 1);
+}
 
-
-#root, main {
+/* #root, main {
     min-height: 100vh;
 }
 
@@ -16,7 +45,7 @@ body {
     border: 1px solid white;
     min-height: 400px;
     padding: 2rem;
-}
+} */
 
 img {
     max-width: 50vw;
