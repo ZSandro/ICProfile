@@ -46,16 +46,13 @@ class ProfileForm extends React.Component<Props> {
   }
 
   handleSubmit() {
-    const { familyName, givenName } = this.state.profile.bio;
+    const { nickName } = this.state.profile.bio;
     const newProfile = Object.assign({}, this.state.profile);
-    let name: string = [givenName[0], familyName[0]].join(" ");
-    newProfile.bio.name = name ? [name] : [];
-
     this.props.submitCallback(newProfile);
   }
 
   render() {
-    const { name, displayName, givenName, location, about, familyName } =
+    const { nickName,  location, about } =
       this.state.profile.bio;
 
     const handleChange = this.handleChange.bind(this);

@@ -81,29 +81,29 @@ function ManageProfile() {
       ?.update(profile)
       .then(async (profileUpdate) => {
         if ("ok" in profileUpdate) {
-          const profileResponse = await actor.read();
-          if ("ok" in profileResponse) {
-            // Don't do anything if there is no difference.
-            if (compare(profileResponse.ok)) return;
+        //   const profileResponse = await actor.read();
+        //   if ("ok" in profileResponse) {
+        //     // Don't do anything if there is no difference.
+        //     if (compare(profileResponse.ok)) return;
 
-            updateProfile?.(profileResponse.ok);
-          } else {
-            console.error(profileResponse.err);
-            toast.error("Failed to read profile from IC");
-          }
-        } else {
-          console.error(profileUpdate.err);
-          toast.error("Failed to save update to IC");
+        //     updateProfile?.(profileResponse.ok);
+        //   } else {
+        //     console.error(profileResponse.err);
+        //     toast.error("Failed to read profile from IC");
+        //   }
+        // } else {
+        //   console.error(profileUpdate.err);
+        //   toast.error("Failed to save update to IC");
         }
       })
       .catch((err) => {
         console.error(err);
         toast.error("Failed to save update to IC");
-        actor.read().then((response) => {
-          if ("ok" in response) {
-            updateProfile?.(response.ok);
-          }
-        });
+        // actor.read().then((response) => {
+        //   if ("ok" in response) {
+        //     updateProfile?.(response.ok);
+        //   }
+        // });
       });
   };
 
@@ -115,14 +115,11 @@ function ManageProfile() {
 
   if (!profile) return null;
 
-  const { name, displayName, givenName, location, about, familyName } =
+  const { nickName, location, about } =
     profile.bio;
   const image = profile.image[0];
   // Greet the user
   let fallbackDisplayName = name;
-  if (givenName[0]) fallbackDisplayName = givenName;
-  if (displayName[0]) fallbackDisplayName = displayName;
-
   return (
     <>
       {isEditing ? (
@@ -141,7 +138,7 @@ function ManageProfile() {
         <section key={String(isEditing)}>
           <Heading level={2}>
             Welcome back
-            {fallbackDisplayName[0] ? `, ${fallbackDisplayName[0]}` : ""}!
+
           </Heading>
           <DetailsList>
             <Grid columns="1fr 1fr" gap="1rem">
@@ -149,13 +146,13 @@ function ManageProfile() {
                 <img src={image} />
               </ProfileImage>
               <dd>Name:</dd>
-              <dt>{name}</dt>
+              <dt>{nickName}</dt>
               <dd>Display Name:</dd>
-              <dt>{displayName}</dt>
+              <dt>{nickName}</dt>
               <dd>First Name:</dd>
-              <dt>{givenName}</dt>
+              <dt>{nickName}</dt>
               <dd>Last Name:</dd>
-              <dt>{familyName}</dt>
+              <dt>{nickName}</dt>
               <dd>location:</dd>
               <dt>{location}</dt>
               <dd>About:</dd>

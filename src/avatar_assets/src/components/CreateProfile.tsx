@@ -41,13 +41,13 @@ const CreateProfile = (props: Props) => {
     // Handle creation and verification async
     actor?.create(profile).then(async (createResponse) => {
       if ("ok" in createResponse) {
-        const profileResponse = await actor.read();
-        if ("ok" in profileResponse) {
-          // Do nothing, we already updated
-        } else {
-          console.error(profileResponse.err);
-          handleCreationError();
-        }
+        // const profileResponse = await actor.read();
+        // if ("ok" in profileResponse) {
+        //   // Do nothing, we already updated
+        // } else {
+        //   console.error(profileResponse.err);
+        //   handleCreationError();
+        // }
       } else {
         handleCreationError();
         remove("ic-delegation");

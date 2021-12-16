@@ -76,32 +76,32 @@ const App = () => {
       if (!profile) {
         toast.loading("Checking the IC for an existing avatar");
       }
-      actor.read().then((result) => {
-        if (history.location.pathname === "/") return;
-        // if ("ok" in result) {
-        //   // Return if IC profile matches current
-        //   if (profilesMatch(profile, result.ok)) {
-        //     return;
-        //   }
-        //   toast.success("Updated avatar from IC");
-        //   updateProfile(result.ok);
-        // } else {
-        //   if ("NotAuthorized" in result.err) {
-        //     // clear local delegation and log in
-        //     toast.error("Your session expired. Please reauthenticate");
-        //     logout();
-        //   } else if ("NotFound" in result.err) {
-        //     // User has deleted account
-        //     remove("profile");
-        //     if (profile) {
-        //       toast.error("Avatar not found in IC. Please try creating again");
-        //     }
-        //     updateProfile(undefined);
-        //   } else {
-        //     toast.error("Error: " + Object.keys(result.err)[0]);
-        //   }
-        // }
-      });
+      // actor.read().then((result) => {
+      //   if (history.location.pathname === "/") return;
+      //   // if ("ok" in result) {
+      //   //   // Return if IC profile matches current
+      //   //   if (profilesMatch(profile, result.ok)) {
+      //   //     return;
+      //   //   }
+      //   //   toast.success("Updated avatar from IC");
+      //   //   updateProfile(result.ok);
+      //   // } else {
+      //   //   if ("NotAuthorized" in result.err) {
+      //   //     // clear local delegation and log in
+      //   //     toast.error("Your session expired. Please reauthenticate");
+      //   //     logout();
+      //   //   } else if ("NotFound" in result.err) {
+      //   //     // User has deleted account
+      //   //     remove("profile");
+      //   //     if (profile) {
+      //   //       toast.error("Avatar not found in IC. Please try creating again");
+      //   //     }
+      //   //     updateProfile(undefined);
+      //   //   } else {
+      //   //     toast.error("Error: " + Object.keys(result.err)[0]);
+      //   //   }
+      //   // }
+      // });
     }
   }, [actor]);
 

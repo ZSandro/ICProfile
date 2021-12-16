@@ -1,3 +1,9 @@
+type Trie = 
+ variant {
+   branch: Branch;
+   "empty";
+   leaf: Leaf;
+ };
 type Result_1 = 
  variant {
    err: Error;
@@ -19,24 +25,56 @@ type Profile =
    id: principal;
    image: opt text;
  };
+type List = 
+ opt record {
+       record {
+         Key;
+         text;
+       };
+       List;
+     };
+type Leaf = 
+ record {
+   keyvals: AssocList;
+   size: nat;
+ };
+type Key = 
+ record {
+   hash: Hash;
+   key: text;
+ };
+type Hash = nat32;
 type Error = 
  variant {
    AlreadyExists;
    NotAuthorized;
    NotFound;
  };
+type Branch = 
+ record {
+   left: Trie;
+   right: Trie;
+   size: nat;
+ };
 type Bio = 
  record {
    about: opt text;
-   displayName: opt text;
-   familyName: opt text;
-   givenName: opt text;
+   imageUrl: opt text;
    location: opt text;
-   name: opt text;
+   nickName: opt text;
+   socialAccounts: opt Trie;
  };
+type AssocList = 
+ opt record {
+       record {
+         Key;
+         text;
+       };
+       List;
+     };
 service : {
   create: (ProfileUpdate) -> (Result);
   delete: () -> (Result);
-  read: () -> (Result_1);
+  read: (principal) -> (Result_1);
   update: (ProfileUpdate) -> (Result);
 }

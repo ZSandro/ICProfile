@@ -88,11 +88,10 @@ export function useProfile(props: UseProfileProps) {
 export const emptyProfile: ProfileUpdate = {
   image: [],
   bio: {
-    givenName: [],
-    familyName: [],
-    name: [],
-    displayName: [],
+    nickName: [],
     about: [],
-    location: [],
+    socialAccounts: [], 
+    imageUrl: [], 
+    location: []
   },
 };

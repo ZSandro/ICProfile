@@ -78,7 +78,7 @@ class Profile extends React.Component<Props> {
 
 
 render() {
-  const { name, displayName, givenName, location, about, familyName } =
+  const { nickName, location, about } =
     this.state.profile.bio;
   return (
     <section>
@@ -88,12 +88,12 @@ render() {
         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
       />
       <Descriptions title="User Info">
-        <Descriptions.Item label="name">{name}</Descriptions.Item>
-        <Descriptions.Item label="displayName">{displayName}</Descriptions.Item>
-        <Descriptions.Item label="givenName">{givenName}</Descriptions.Item>
+        <Descriptions.Item label="name">{nickName}</Descriptions.Item>
+        <Descriptions.Item label="displayName">{nickName}</Descriptions.Item>
+        <Descriptions.Item label="givenName">{nickName}</Descriptions.Item>
         <Descriptions.Item label="location">{location}</Descriptions.Item>
         <Descriptions.Item label="about">{about}</Descriptions.Item>
-        <Descriptions.Item label="familyName">{familyName}</Descriptions.Item>
+        <Descriptions.Item label="familyName">{nickName}</Descriptions.Item>
       </Descriptions>,
     </section>
   );
