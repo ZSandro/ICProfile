@@ -16,6 +16,7 @@ const CreateProfile = () => {
     useContext(AppContext);
   const history = useHistory();
 
+
   function handleCreationError() {
     remove("profile");
     setIsAuthenticated?.(false);
@@ -51,11 +52,15 @@ const CreateProfile = () => {
   };
 
   return (
-    <ProfileForm
-      submitCallback={submitCallback}
-      actor={actor}
-      profile={emptyProfile}
-    />
+    <section>
+      <ProfileForm
+        submitCallback={submitCallback}
+        actor={actor}
+        profile={emptyProfile}
+      />
+    </section>
+
+
   );
 };
 
