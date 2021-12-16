@@ -60,6 +60,22 @@ body {
     border-radius: 8px;
     box-shadow: 1px 1px 1px 0 black;
 }
+.editor_modal_item {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80px;
+    width: 80px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px 1px gray;
+}
+.editor_common_item_module {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 .logout {
     position: absolute;
     right: 0px;

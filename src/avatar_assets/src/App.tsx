@@ -3,7 +3,6 @@ import NotAuthenticated from "./components/NotAuthenticated";
 import Home from "./components/Home";
 import { _SERVICE, ProfileUpdate } from "../../declarations/avatar/avatar.did";
 import toast, { Toaster } from "react-hot-toast";
-import ErrorBoundary from "./components/ErrorBoundary";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -16,6 +15,7 @@ import { createBrowserHistory } from "history";
 import CreateProfile from "./components/CreateProfile";
 import ManageProfile from "./components/ManageProfile";
 import ProfileEditor from "./components/ProfileEditor";
+import CommonItemEditor from "./components/CommonItemEditor";
 import Profile from "./components/Profile";
 import { emptyProfile, useAuthClient, useProfile } from "./hooks";
 import { AuthClient } from "@dfinity/auth-client";
@@ -58,16 +58,17 @@ const App = () => {
     actor,
   } = useAuthClient();
   const [isEditing, setIsEditing] = React.useState(false);
+  const [editingId, setEditingId] = React.useState(0);
   const identity = authClient?.getIdentity();
   const { profile, updateProfile } = useProfile({ identity });
 
   const backMethod = ()=> {
     setIsEditing(false)
-    console.log('onback')
   }
 
-  const enterEditingMethod = () => {
+  const enterEditingMethod = (id: number) => {
     setIsEditing(true)
+    setEditingId(id)
   }
 
   useEffect(() => {
@@ -148,7 +149,9 @@ const App = () => {
               </Sider>
               <Sider width={440}>
                 { isEditing? (
-                  <CreateProfile onBack={backMethod}/>) 
+                  (editingId == 0) ?
+                  (<CreateProfile onBack={backMethod}/>): 
+                  (<CommonItemEditor onBack={backMethod}/>)) 
                : (
                  <ProfileEditor enterEditing={enterEditingMethod}/>)
                 }
