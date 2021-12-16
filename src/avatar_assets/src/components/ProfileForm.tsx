@@ -1,7 +1,7 @@
-
+import { clear, remove, set } from "local-storage";
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-
+import toast, { Toaster } from "react-hot-toast";
 import { ActorSubclass } from "@dfinity/agent";
 import React from "react";
 import {
@@ -13,7 +13,7 @@ import { emptyProfile } from "../hooks";
 import ProfileUpload from "./ProfileUpload";
 
 interface Props {
-  profile: ProfileUpdate;
+  profile?: ProfileUpdate;
   submitCallback: (profile: ProfileUpdate) => void;
   actor?: ActorSubclass<_SERVICE>;
 }
@@ -46,9 +46,13 @@ class ProfileForm extends React.Component<Props> {
   }
 
   handleSubmit() {
+    
     const { nickName } = this.state.profile.bio;
     const newProfile = Object.assign({}, this.state.profile);
+    const newState: any = { profile: this.state.profile };
+    this.setState(newState)
     this.props.submitCallback(newProfile);
+    toast.success("aaaaaa"+JSON.stringify(newProfile));
   }
 
   render() {
@@ -93,7 +97,10 @@ class ProfileForm extends React.Component<Props> {
               },
             ]}
           >
-            <Input />
+            <Input value={nickName[0] || ""} 
+            onChange={(value) => handleChange("nickName", value.target.value)} 
+            />
+            
           </Form.Item>
           
           <Form.Item
@@ -145,7 +152,9 @@ class ProfileForm extends React.Component<Props> {
               },
             ]}
           >
-            <Input />
+            <Input value={location[0] || ""} 
+            onChange={(value) => handleChange("location", value.target.value)} 
+            />
           </Form.Item>
 
           <Form.Item
@@ -158,7 +167,9 @@ class ProfileForm extends React.Component<Props> {
               },
             ]}
           >
-            <Input />
+           <Input value={about[0] || ""} 
+            onChange={(value) => handleChange("about", value.target.value)} 
+            />
           </Form.Item>
 
 
