@@ -16,7 +16,7 @@ import CreateProfile from "./components/CreateProfile";
 import ManageProfile from "./components/ManageProfile";
 import ProfileEditor from "./components/ProfileEditor";
 import CommonItemEditor from "./components/CommonItemEditor";
-import Profile from "./components/Profile";
+import ProfilePage from "./components/ProfilePage";
 import { emptyProfile, useAuthClient, useProfile } from "./hooks";
 import { AuthClient } from "@dfinity/auth-client";
 import { ActorSubclass } from "@dfinity/agent";
@@ -164,10 +164,10 @@ const App = () => {
                       <NotAuthenticated />
                     </Route>
                     <Route path="/manage" exact>
-                      <Profile />
+                      <ProfilePage />
                     </Route>
                     <Route path="/create" exact>
-                      <Profile />
+                      <ProfilePage />
                     </Route>
                   </Switch>
                 </Row>
