@@ -6,12 +6,11 @@ import Principal "mo:base/Principal";
 
 actor Avatar {
     type Bio = {
-        givenName: ?Text;
-        familyName: ?Text;
-        name: ?Text;
-        displayName: ?Text;
+        nickName: ?Text;
+        imageUrl: ?Text;
         location: ?Text;
         about: ?Text;
+        socialAccounts:?Trie.Trie<Text,Text>;
     };
 
     type Profile = {
@@ -75,7 +74,7 @@ actor Avatar {
     };
 
     // Read profile
-    public shared(msg) func read () : async Result.Result<Profile, Error> {
+    public shared(msg) func read (pid:Principal) : async Result.Result<Profile, Error> {
         // Get caller principal
         let callerId = msg.caller;
 
@@ -86,7 +85,7 @@ actor Avatar {
 
         let result = Trie.find(
             profiles,           //Target Trie
-            key(callerId),      // Key
+            key(pid),      // Key
             Principal.equal     // Equality Checker
         );
         return Result.fromOption(result, #NotFound);
