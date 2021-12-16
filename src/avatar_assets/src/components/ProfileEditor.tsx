@@ -4,10 +4,11 @@ import {
   ProfileUpdate,
   _SERVICE,
 } from "../../../declarations/avatar/avatar.did";
-import {Button, Modal, List, Avatar, Card} from 'antd'
+import {Button, Modal, List, Avatar, Image, Row, Col} from 'antd'
 import { profilesMatch } from "../utils";
+import { Item } from "@react-stately/collections";
 interface Props {
-  enterEditing: () => void;
+  enterEditing: (id: number) => void;
 }
 
 const ProfileEditor = (props: Props) => {
@@ -22,31 +23,74 @@ const ProfileEditor = (props: Props) => {
   };
 
   const handleCancel = () => {
-    console.log('Clicked cancel button');
     setVisible(false);
   };
-  const handleItemClick = (item: number) => {
-    if (item == 0) {
-        props.enterEditing()
-    } else {
-        setVisible(true)
-    }
+  const handleItemClick = (id: number) => {
+    props.enterEditing(id)
+    console.log(id)
   };
+  const testUrl = 'https://s3.amazonaws.com/appforest_uf/f1638965014561x223953153292650000/twitter%20%284%29.svg'
+  const items = [
+      {
+          id: 0,
+          title: '基础信息',
+          url: testUrl
+      },
+      {
+          id: 1,
+          title: 'Twitter',
+          url: testUrl
+      },
+      {
+          id: 2,
+          title: 'Facebook',
+          url: testUrl
+      },
+    {
+          id: 3,
+          title: 'LinkedIn',
+          url: testUrl
+      }
+  ]
   const data = [
   {
     id: 0,
+    url: testUrl,
     title: '基础信息',
   },
   {
+    id: 1,
+    url: testUrl,
     title: '比特币钱包',
   },
   {
+    id: 2,
     title: 'Mirror',
   },
   {
+    id: 2,
     title: 'NFT橱柜',
   },
 ];
+
+  function generateModuleItems() {
+        const viewList =  items.map(
+                (item) => (
+                    <Col span={6}>
+                        <div className="editor_modal_item">
+                        <Image
+                            preview={false}
+                            width={60}
+                            height={60}
+                            src={item.url}
+                        />
+                        <p>{item.title}</p>
+                        </div>
+                    </Col>
+                )
+        )
+        return viewList;
+  }
 
   return (
       
@@ -69,13 +113,15 @@ const ProfileEditor = (props: Props) => {
     )}
   />
         <Modal
-            title="选择模块"
+            title="创建模块"
             visible={visible}
             onOk={handleOk}
+            width={700}
             onCancel={handleCancel}>
-            <div>
-                <p>选择社交账号，富文本设计的面板，这里有很多的选项</p>
-            </div>
+            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} justify="start">
+                { generateModuleItems() }
+            </Row>    
+
       </Modal>
     </div>
   );
