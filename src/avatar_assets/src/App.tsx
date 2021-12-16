@@ -16,7 +16,7 @@ import { createBrowserHistory } from "history";
 import CreateProfile from "./components/CreateProfile";
 import ManageProfile from "./components/ManageProfile";
 import ProfileEditor from "./components/ProfileEditor";
-import Profile from "./components/Profile";
+import ProfileShow from "./components/ProfileShow";
 import { emptyProfile, useAuthClient, useProfile } from "./hooks";
 import { AuthClient } from "@dfinity/auth-client";
 import { ActorSubclass } from "@dfinity/agent";
@@ -161,10 +161,10 @@ const App = () => {
                       <NotAuthenticated />
                     </Route>
                     <Route path="/manage" exact>
-                      <Profile />
+                      <ProfileShow />
                     </Route>
                     <Route path="/create" exact>
-                      <Profile />
+                      <ProfileShow />
                     </Route>
                   </Switch>
                 </Row>

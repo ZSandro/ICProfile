@@ -58,12 +58,12 @@ const CreateProfile = (props: Props) => {
 
   return (
     <div>
-    <PageHeader
-      className="site-page-header"
-      onBack={props.onBack}
-      title="个人信息"
-      subTitle="编辑个人信息"
-    />,
+      <PageHeader
+        className="site-page-header"
+        onBack={props.onBack}
+        title="个人信息"
+        subTitle="编辑个人信息"
+      />,
       <ProfileForm
         submitCallback={submitCallback}
         actor={actor}
