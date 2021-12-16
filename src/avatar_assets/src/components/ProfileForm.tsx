@@ -63,7 +63,6 @@ class ProfileForm extends React.Component<Props> {
     const handleImage = this.handleImage.bind(this);
     return (
       <section>
-
         <ProfileUpload
           onChange={handleImage}
           defaultImage={this.state.profile.image[0]}
@@ -181,21 +180,5 @@ class ProfileForm extends React.Component<Props> {
     );
   }
 }
-
-/*{ <Form
-          onFinish={(e) => {
-            e.preventDefault();
-            handleSubmit();
-          }}
-        >
-          <ProfileUpload
-            onChange={handleImage}
-            defaultImage={this.state.profile.image[0]}
-          />
-          
-          <Button type="primary" onClick={handleSubmit}>
-            Submit
-          </Button>
-        </Form> }*/
 
 export default ProfileForm;

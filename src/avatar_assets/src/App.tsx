@@ -15,6 +15,7 @@ import {
 import { createBrowserHistory } from "history";
 import CreateProfile from "./components/CreateProfile";
 import ManageProfile from "./components/ManageProfile";
+import ProfileEditor from "./components/ProfileEditor";
 import Profile from "./components/Profile";
 import { emptyProfile, useAuthClient, useProfile } from "./hooks";
 import { AuthClient } from "@dfinity/auth-client";
@@ -24,29 +25,10 @@ import { clear, remove } from "local-storage";
 import { useState } from "react";
 import RedirectManager from "./components/RedirectManager";
 import { profilesMatch } from "./utils";
-import { Layout, Button,  Row } from 'antd';
+import { Layout, Button,  Row, Image } from 'antd';
 import 'antd/dist/antd.css';
 import '../assets/main.css';
-
-
 const { Header, Footer, Sider, Content } = Layout;
-
-
-// const Header = styled.header`
-//   position: relative;
-//   padding: 1rem;
-//   display: flex;
-//   justify-content: center;
-//   h1 {
-//     margin-top: 0;
-//   }
-//   #logout {
-//     position: absolute;
-//     right: 0.5rem;
-//     top: 0.5rem;
-//   }
-// `;
-
 
 export const AppContext = React.createContext<{
   authClient?: AuthClient;
@@ -75,12 +57,21 @@ const App = () => {
     logout,
     actor,
   } = useAuthClient();
+  const [isEditing, setIsEditing] = React.useState(false);
   const identity = authClient?.getIdentity();
   const { profile, updateProfile } = useProfile({ identity });
 
+  const backMethod = ()=> {
+    setIsEditing(false)
+    console.log('onback')
+  }
+
+  const enterEditingMethod = () => {
+    setIsEditing(true)
+  }
+
   useEffect(() => {
     if (history.location.pathname === "/") return;
-
     if (actor) {
       if (!profile) {
         toast.loading("Checking the IC for an existing avatar");
@@ -141,20 +132,26 @@ const App = () => {
         <Router>
           <RedirectManager />
           <Layout>
-            <Header>
-              <div id="header-container">
-                <p>1.435</p>
+            <Header className="header-container">
+              <Image width={150} height={100} src="../assets/logo.png" preview={false}/>
                 <Route path="/manage">
-                  <Button type="text" id="logout" onClick={logout}>Log out</Button>
+                  <Button type="text" className="logout" onClick={logout}>Log out</Button>
                 </Route>
                 <Route path="/create">
-                  <Button type="text" id="logout" onClick={logout}>Log out</Button>
+                  <Button type="text" className="logout" onClick={logout}>Log out</Button>
                 </Route>
-              </div>
             </Header>
             <Layout>
-              <Sider>
-                <CreateProfile />
+              <Sider width={90} className="side_operation">
+                <p className="side_op_item">模板</p>
+                <p className="side_op_item">主题</p>
+              </Sider>
+              <Sider width={440}>
+                { isEditing? (
+                  <CreateProfile onBack={backMethod}/>) 
+               : (
+                 <ProfileEditor enterEditing={enterEditingMethod}/>)
+                }
               </Sider>
               <Content>
                 <Row>

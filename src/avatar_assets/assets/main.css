@@ -1,19 +1,8 @@
 body {
     font-family: sans-serif;
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: 0;
     margin: 0;
-}
-.header-container {
-    display: flex;
-    flex-direction: column;
-    max-height: 100px;
-}
-.logout {
-    position: absolute;
-    right: 100px;
-    left: 10px;
-    top: 20px;
 }
 .ant-layout-header,
 .ant-layout-footer {
@@ -33,6 +22,50 @@ body {
   color: #fff;
   height: 1000px;
   background: rgba(16, 142, 233, 1);
+}
+.header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.side_operation {
+    width: 90px;
+    background: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.side_op_item {
+    background: coral;
+}
+.editor_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.editor_add_btn {
+    background: coral;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.editor_home_list_item {
+    background: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 400px;
+    height: 75px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px 0 black;
+}
+.logout {
+    position: absolute;
+    right: 0px;
+    background: chartreuse;
+    font-size:1.1em;
+    text-align: center;
 }
 
 /* #root, main {

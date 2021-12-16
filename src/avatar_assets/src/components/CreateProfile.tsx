@@ -10,8 +10,13 @@ import { emptyProfile } from "../hooks";
 import { useContext } from "react";
 import { AppContext } from "../App";
 import { useHistory } from "react-router-dom";
+import { PageHeader } from "antd"; 
 
-const CreateProfile = () => {
+interface Props {
+  onBack: () => void;
+}
+
+const CreateProfile = (props: Props) => {
   const { setIsAuthenticated, isAuthenticated, actor, profile, updateProfile } =
     useContext(AppContext);
   const history = useHistory();
@@ -52,14 +57,19 @@ const CreateProfile = () => {
   };
 
   return (
-    <section>
+    <div>
+    <PageHeader
+      className="site-page-header"
+      onBack={props.onBack}
+      title="个人信息"
+      subTitle="编辑个人信息"
+    />,
       <ProfileForm
         submitCallback={submitCallback}
         actor={actor}
         profile={emptyProfile}
       />
-    </section>
-
+    </div>
 
   );
 };
