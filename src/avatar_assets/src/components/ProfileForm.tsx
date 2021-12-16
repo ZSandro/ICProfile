@@ -87,13 +87,13 @@ class ProfileForm extends React.Component<Props> {
           autoComplete="off"
         >
           <Form.Item
-            label="Name"
-            name="Name"
+            label="nickName"
+            name="nickName"
             //defaultValue={name}
             rules={[
               {
                 required: true,
-                message: 'Please input your username!',
+                message: 'Please input your nickName!',
               },
             ]}
           >
@@ -101,45 +101,6 @@ class ProfileForm extends React.Component<Props> {
             onChange={(value) => handleChange("nickName", value.target.value)} 
             />
             
-          </Form.Item>
-          
-          <Form.Item
-            label="Display Name"
-            name="Display Name"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your Display Name!',
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label="First Name"
-            name="First Name"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your First Name!',
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label="Last Name"
-            name="Last Name"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your Last Name!',
-              },
-            ]}
-          >
-            <Input />
           </Form.Item>
 
           <Form.Item
