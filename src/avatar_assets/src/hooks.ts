@@ -13,7 +13,9 @@ export function useAuthClient(props?: UseAuthClientProps) {
 
   const login = () => {
     authClient?.login({
-      identityProvider: process.env.II_URL,
+      identityProvider:
+        "http://localhost:8000/?canisterId=rwlgt-iiaaa-aaaaa-aaaaa-cai",
+      //identityProvider: process.env.II_URL,
       onSuccess: () => {
         initActor();
         setIsAuthenticated(true);
@@ -40,7 +42,7 @@ export function useAuthClient(props?: UseAuthClientProps) {
     AuthClient.create().then(async (client) => {
       const isAuthenticated = await client.isAuthenticated();
       setAuthClient(client);
-      setIsAuthenticated(true);
+    //  setIsAuthenticated(true);
     });
   }, []);
 
@@ -88,10 +90,10 @@ export function useProfile(props: UseProfileProps) {
 export const emptyProfile: ProfileUpdate = {
   image: [],
   bio: {
-    nickName: "Jensen",
-    about: "This is a test profile",
+    nickName: ["Jensen"],
+    about: ["This is a test profile"],
     socialAccounts: [], 
-    imageUrl: "https://joeschmoe.io/api/v1/random", 
-    location: "Beijing",
+    imageUrl: ["https://joeschmoe.io/api/v1/random"], 
+    location: ["Beijing"],
   },
 };

@@ -59,7 +59,10 @@ type Branch =
 type Bio = 
  record {
    about: opt text;
-   imageUrl: opt text;
+   cateSubAccounts1: opt Trie;
+   cateSubAccounts2: opt Trie;
+   cateSubAccounts3: opt Trie;
+   cateSubAccounts4: opt Trie;
    location: opt text;
    nickName: opt text;
    socialAccounts: opt Trie;

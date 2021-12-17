@@ -35,9 +35,9 @@ class ProfileForm extends React.Component<Props> {
     //TODO 做一下值是否变化的判断，再进行更新
     if (this.mRealProfile) {
         switch(key) {
-          case "about": this.mRealProfile.bio.about = value
-          case "nickName": this.mRealProfile.bio.nickName = value
-          case "location": this.mRealProfile.bio.location = value
+          case "about": this.mRealProfile.bio.about = [value]
+          case "nickName": this.mRealProfile.bio.nickName = [value]
+          case "location": this.mRealProfile.bio.location = [value]
         }
     }
     this.props.submitCallback(this.mRealProfile)
@@ -60,7 +60,7 @@ class ProfileForm extends React.Component<Props> {
       <section>
         <ProfileUpload
           onChange={handleImage}
-          defaultImage={this.props.profile?.bio.imageUrl}
+          defaultImage={this.props.profile?.bio.imageUrl[0]}
         />
         <Form
           name="basic"
