@@ -5,8 +5,6 @@ import {
   _SERVICE,
 } from "../../../declarations/avatar/avatar.did";
 import {Button, Modal, List, Avatar, Image, Row, Col} from 'antd'
-import { profilesMatch } from "../utils";
-import { Item } from "@react-stately/collections";
 interface Props {
   enterEditing: (id: number) => void;
 }

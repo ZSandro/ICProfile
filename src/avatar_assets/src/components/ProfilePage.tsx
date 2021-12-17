@@ -14,20 +14,15 @@ interface Props {
   profile?: ProfileUpdate;
   submitCallback?: (profile: ProfileUpdate) => void;
   actor?: ActorSubclass<_SERVICE>;
+  isModify: Boolean;
 }
 
 class ProfilePage extends React.Component<Props> {
-  state = { profile: emptyProfile, isPhone: false };
+  state = { isPhone: false };
 
   formRef = React.createRef();
   constructor(props: Props) {
     super(props);
-  }
-
-  componentDidMount() {
-    if (this.props.profile) {
-      this.setState({ profile: this.props.profile });
-    }
   }
 
   changeValue() {
@@ -35,9 +30,11 @@ class ProfilePage extends React.Component<Props> {
     this.setState({isPhone: !result})
   }
 
+  componentWillReceiveProps() {
+    console.log("Data recice")
+  }
+
 render() {
-  const { nickName, location, about } =
-    this.state.profile.bio;
   const changeState = this.changeValue.bind(this)
   return (
       <div className="preview_page">
@@ -49,9 +46,9 @@ render() {
           <Button type="primary" shape="round" className="preview_publish">发布</Button>
         </div>
         {(this.state.isPhone)? (<div className="preview_page_phone"> 
-                    <Profile></Profile>
+                    <Profile profile={this.props.profile}></Profile>
         </div>): (
-            <Profile></Profile>
+            <Profile profile={this.props.profile}></Profile>
         )
         }
       </div>  

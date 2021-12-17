@@ -125,7 +125,6 @@ function ManageProfile() {
       {isEditing ? (
         <section key={String(isEditing)}>
           <Heading level={2}>Editing Profile</Heading>
-          <ProfileForm {...formProps} />
           <ActionButton
             onPress={(e) => {
               setIsEditing(false);

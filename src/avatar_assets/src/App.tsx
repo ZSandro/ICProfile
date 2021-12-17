@@ -13,9 +13,7 @@ import {
 } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import CreateProfile from "./components/CreateProfile";
-import ManageProfile from "./components/ManageProfile";
 import ProfileEditor from "./components/ProfileEditor";
-import Profile from "./components/Profile";
 import CommonItemEditor from "./components/CommonItemEditor";
 import ProfilePage from "./components/ProfilePage";
 import { emptyProfile, useAuthClient, useProfile } from "./hooks";
@@ -25,7 +23,6 @@ import { useEffect } from "react";
 import { clear, remove, set } from "local-storage";
 import { useState } from "react";
 
-import ProfileShowControl from "./components/ProfileShowControl";
 import RedirectManager from "./components/RedirectManager";
 import { profilesMatch } from "./utils";
 import { Layout, Button,  Row, Image } from 'antd';
@@ -63,8 +60,10 @@ const App = () => {
   } = useAuthClient();
   const [isEditing, setIsEditing] = React.useState(false);
   const [editingId, setEditingId] = React.useState(0);
+  const [isModify, setIsModify] = React.useState(false);
   const identity = authClient?.getIdentity();
-  const { profile, updateProfile } = useProfile({ identity });
+
+  const [ profile, updateProfile ] = React.useState(emptyProfile)
 
   const backMethod = ()=> {
     setIsEditing(false)
@@ -78,71 +77,49 @@ const App = () => {
   useEffect(() => {
     if (history.location.pathname === "/") return;
     if (actor) {
-      if (!profile) {
-        toast.loading("Checking the IC for an existing avatar");
-      }
-      // actor.read().then((result) => {
-      //   if (history.location.pathname === "/") return;
-      //   // if ("ok" in result) {
-      //   //   // Return if IC profile matches current
-      //   //   if (profilesMatch(profile, result.ok)) {
-      //   //     return;
-      //   //   }
-      //   //   toast.success("Updated avatar from IC");
-      //   //   updateProfile(result.ok);
-      //   // } else {
-      //   //   if ("NotAuthorized" in result.err) {
-      //   //     // clear local delegation and log in
-      //   //     toast.error("Your session expired. Please reauthenticate");
-      //   //     logout();
-      //   //   } else if ("NotFound" in result.err) {
-      //   //     // User has deleted account
-      //   //     remove("profile");
-      //   //     if (profile) {
-      //   //       toast.error("Avatar not found in IC. Please try creating again");
-      //   //     }
-      //   //     updateProfile(undefined);
-      //   //   } else {
-      //   //     toast.error("Error: " + Object.keys(result.err)[0]);
-      //   //   }
-      //   // }
-      // });
     }
   }, [actor]);
 
   function handleCreationError() {
     remove("profile");
     setIsAuthenticated?.(false);
-    updateProfile?.(emptyProfile);
+    //updateProfile?.(emptyProfile);
     toast.error("There was a problem creating your profile");
   }
 
 //点击提交会调用这个方法，在这里通知右边界面刷新
-const submitCallback = async (profile: ProfileUpdate) => {
+const submitCallback = async (profile?: ProfileUpdate) => {
   // Save profile locally
-  set("profile", JSON.stringify(profile));
-  
-  toast.success(JSON.stringify(profile));
+  if (profile) {
+    updateProfile(profile)
+    let modify = isModify
+    setIsModify(!modify)
+    console.log("Data update")
+  } else {
+    toast.success("Failure");
+  }
+  // set("profile", JSON.stringify(profile));
+  // toast.success(JSON.stringify(profile));
   // Optimistic update
-  updateProfile?.(profile);
+  // updateProfile?.(profile);
   // history.push("/manage");
 
   // Handle creation and verification async
-  actor?.create(profile).then(async (createResponse) => {
-    if ("ok" in createResponse) {
-      // const profileResponse = await actor.read();
-      // if ("ok" in profileResponse) {
-      //   // Do nothing, we already updated
-      // } else {
-      //   console.error(profileResponse.err);
-      //   handleCreationError();
-      // }
-    } else {
-      handleCreationError();
-      remove("ic-delegation");
-      console.error(createResponse.err);
-    }
-  });
+  // actor?.create(profile).then(async (createResponse) => {
+  //   if ("ok" in createResponse) {
+  //     // const profileResponse = await actor.read();
+  //     // if ("ok" in profileResponse) {
+  //     //   // Do nothing, we already updated
+  //     // } else {
+  //     //   console.error(profileResponse.err);
+  //     //   handleCreationError();
+  //     // }
+  //   } else {
+  //     handleCreationError();
+  //     remove("ic-delegation");
+  //     console.error(createResponse.err);
+  //   }
+  // });
 };
 
   if (!authClient) return null;
@@ -155,7 +132,6 @@ const submitCallback = async (profile: ProfileUpdate) => {
           position: "bottom-center",
         }}
       />
-      {/* <ErrorBoundary> */}
       <AppContext.Provider
         value={{
           authClient,
@@ -189,7 +165,7 @@ const submitCallback = async (profile: ProfileUpdate) => {
               <Sider width={440}>
                 { isEditing? (
                   (editingId == 0) ?
-                  (<CreateProfile onBack={backMethod} submitCallback={submitCallback}/>): 
+                  (<CreateProfile profile={profile} onBack={backMethod} submitCallback={submitCallback}/>): 
                   (<CommonItemEditor onBack={backMethod}/>)) 
                : (
                  <ProfileEditor enterEditing={enterEditingMethod}/>)
@@ -203,10 +179,10 @@ const submitCallback = async (profile: ProfileUpdate) => {
                       <NotAuthenticated />
                     </Route>
                     <Route path="/manage" exact>
-                      <Profile profile={profile}/>
+                      <ProfilePage profile={profile} isModify={isModify}/>
                     </Route>
                     <Route path="/create" exact>
-                      <Profile profile={profile}/>
+                      <ProfilePage profile={profile} isModify={isModify}/>
                     </Route>
                   </Switch>
                 </Row>
@@ -216,7 +192,6 @@ const submitCallback = async (profile: ProfileUpdate) => {
           </Layout>
         </Router>
       </AppContext.Provider>
-      {/* </ErrorBoundary> */}
     </>
   );
 };

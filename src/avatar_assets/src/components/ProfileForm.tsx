@@ -1,11 +1,8 @@
 import { clear, remove, set } from "local-storage";
 import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import toast, { Toaster } from "react-hot-toast";
 import { ActorSubclass } from "@dfinity/agent";
 import React from "react";
 import {
-  Bio,
   ProfileUpdate,
   _SERVICE,
 } from "../../../declarations/avatar/avatar.did";
@@ -14,17 +11,18 @@ import ProfileUpload from "./ProfileUpload";
 
 interface Props {
   profile?: ProfileUpdate;
-  submitCallback: (profile: ProfileUpdate) => void;
+  submitCallback: (profile?: ProfileUpdate) => void;
   actor?: ActorSubclass<_SERVICE>;
 }
 
 class ProfileForm extends React.Component<Props> {
   state = { profile: emptyProfile };
-
   formRef = React.createRef();
+  private mRealProfile?: ProfileUpdate = emptyProfile;
 
   constructor(props: Props) {
     super(props);
+    this.mRealProfile = this.props.profile
   }
 
   componentDidMount() {
@@ -34,31 +32,27 @@ class ProfileForm extends React.Component<Props> {
   }
 
   handleChange(key: string, value: string) {
-    const newState: any = { profile: this.state.profile };
-    newState.profile.bio[key] = value ? [value] : [];
-    this.setState(newState);
+    //TODO 做一下值是否变化的判断，再进行更新
+    if (this.mRealProfile) {
+        switch(key) {
+          case "about": this.mRealProfile.bio.about = value
+          case "nickName": this.mRealProfile.bio.nickName = value
+          case "location": this.mRealProfile.bio.location = value
+        }
+    }
+    this.props.submitCallback(this.mRealProfile)
   }
 
+  //TOOD 可参考handleChange处理方式
   handleImage(image: string) {
-    const newState: any = { profile: this.state.profile };
-    newState.profile.image = image ? [image] : [];
-    this.setState(newState);
+    this.props.submitCallback(this.mRealProfile)
   }
 
   handleSubmit() {
-    
-    const { nickName } = this.state.profile.bio;
-    const newProfile = Object.assign({}, this.state.profile);
-    const newState: any = { profile: this.state.profile };
-    this.setState(newState)
-    this.props.submitCallback(newProfile);
-    toast.success("aaaaaa"+JSON.stringify(newProfile));
+    this.props.submitCallback(this.mRealProfile)
   }
 
   render() {
-    const { nickName,  location, about } =
-      this.state.profile.bio;
-
     const handleChange = this.handleChange.bind(this);
     const handleSubmit = this.handleSubmit.bind(this);
     const handleImage = this.handleImage.bind(this);
@@ -66,7 +60,7 @@ class ProfileForm extends React.Component<Props> {
       <section>
         <ProfileUpload
           onChange={handleImage}
-          defaultImage={this.state.profile.image[0]}
+          defaultImage={this.props.profile?.bio.imageUrl}
         />
         <Form
           name="basic"
@@ -89,7 +83,6 @@ class ProfileForm extends React.Component<Props> {
           <Form.Item
             label="nickName"
             name="nickName"
-            //defaultValue={name}
             rules={[
               {
                 required: true,
@@ -97,7 +90,8 @@ class ProfileForm extends React.Component<Props> {
               },
             ]}
           >
-            <Input value={nickName[0] || ""} 
+            <Input value={this.props.profile?.bio.nickName||""} 
+            defaultValue={this.props.profile?.bio.nickName}
             onChange={(value) => handleChange("nickName", value.target.value)} 
             />
             
@@ -113,7 +107,8 @@ class ProfileForm extends React.Component<Props> {
               },
             ]}
           >
-            <Input value={location[0] || ""} 
+            <Input value={this.props.profile?.bio.location} 
+            defaultValue={this.props.profile?.bio.location}
             onChange={(value) => handleChange("location", value.target.value)} 
             />
           </Form.Item>
@@ -128,7 +123,8 @@ class ProfileForm extends React.Component<Props> {
               },
             ]}
           >
-           <Input value={about[0] || ""} 
+           <Input value={this.props.profile?.bio.about} 
+           defaultValue={this.props.profile?.bio.about}
             onChange={(value) => handleChange("about", value.target.value)} 
             />
           </Form.Item>

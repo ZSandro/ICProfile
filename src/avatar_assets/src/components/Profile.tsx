@@ -12,12 +12,9 @@ import { GithubOutlined } from '@ant-design/icons'
 
 interface Props {
   profile?: ProfileUpdate;
-  submitCallback?: (profile: ProfileUpdate) => void;
-  actor?: ActorSubclass<_SERVICE>;
 }
 
 class Profile extends React.Component<Props> {
-    state = { profile: emptyProfile };
     formRef = React.createRef();
 
     constructor(props: Props) {
@@ -25,25 +22,17 @@ class Profile extends React.Component<Props> {
     }
 
     componentDidMount() {
-        if (this.props.profile) {
-            this.setState({ profile: this.props.profile });
-        }
+
     }
-
-    // onChangeValue(profile) {
-    //     //这里写当state中的value改变时对应如何处理
-
-    // }
 
     componentWillReceiveProps(nextProps:any) {
         this.setState({
           profile: nextProps.profile
         });
-      }
-
+        console.log(nextProps)
+    }
 
     render() {
-        const { nickName,  location, about } = this.state.profile.bio;
         return (
             <div className="profile_content">
                 <Avatar
@@ -54,12 +43,10 @@ class Profile extends React.Component<Props> {
                         lg: 64,
                         xl: 80,
                         xxl: 100,
-                    }} src="https://joeschmoe.io/api/v1/random" />
-                <p className="profile_name">Jensen Chen</p>
-                <p className="profile_about">这就是我现在的一个峨眉好的东西这就是</p>
-                <p className="profile_about">nickname:{nickName}</p>
-                <p className="profile_about">location:{location}</p>
-                <p className="profile_about">about:{about}</p>
+                    }} src={this.props.profile?.bio.imageUrl} />
+                <p className="profile_name">{this.props.profile?.bio.nickName}</p>
+                <p className="profile_about">{this.props.profile?.bio.about}</p>
+                <p className="profile_about">nickname:{this.props.profile?.bio.location}</p>
                 <GithubOutlined />
             </div>
         );

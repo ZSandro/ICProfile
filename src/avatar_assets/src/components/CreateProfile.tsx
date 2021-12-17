@@ -14,26 +14,25 @@ import { PageHeader } from "antd";
 
 interface Props {
   onBack: () => void;
-  submitCallback: (profile: ProfileUpdate) => void;
+  submitCallback: (profile?: ProfileUpdate) => void;
+  profile: ProfileUpdate
 }
 
 const CreateProfile = (props: Props) => {
-  const { setIsAuthenticated, isAuthenticated, actor, profile, updateProfile } =
+  const { setIsAuthenticated, isAuthenticated, actor } =
     useContext(AppContext);
   const history = useHistory();
-
   return (
     <div>
       <PageHeader
         className="site-page-header"
         onBack={props.onBack}
         title="个人信息"
-        subTitle="编辑个人信息"
       />,
       <ProfileForm
         submitCallback={props.submitCallback}
         actor={actor}
-        profile={profile}
+        profile={props.profile}
       />
     </div>
 

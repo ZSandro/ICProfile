@@ -14,7 +14,7 @@ import { PageHeader } from "antd";
 
 interface Props {
   onBack: () => void;
-  submitCallback: (profile: ProfileUpdate) => void;
+  submitCallback: (profile?: ProfileUpdate) => void;
 }
 
 const ProfileShowControl = (props: Props) => {
@@ -24,11 +24,6 @@ const ProfileShowControl = (props: Props) => {
 
   return (
     <div>
-      <Profile
-        submitCallback={props.submitCallback}
-        actor={actor}
-        profile={profile}
-      />
     </div>
 
   );

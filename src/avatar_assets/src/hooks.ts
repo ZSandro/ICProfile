@@ -80,7 +80,7 @@ export function useProfile(props: UseProfileProps) {
     }
   }, []);
 
-  if (!identity) return { profile: emptyProfile, updateProfile };
+  // if (!identity) return { profile: emptyProfile, updateProfile };
 
   return { profile, updateProfile };
 }
@@ -88,10 +88,10 @@ export function useProfile(props: UseProfileProps) {
 export const emptyProfile: ProfileUpdate = {
   image: [],
   bio: {
-    nickName: [],
-    about: [],
+    nickName: "Jensen",
+    about: "This is a test profile",
     socialAccounts: [], 
-    imageUrl: [], 
-    location: []
+    imageUrl: "https://joeschmoe.io/api/v1/random", 
+    location: "Beijing",
   },
 };

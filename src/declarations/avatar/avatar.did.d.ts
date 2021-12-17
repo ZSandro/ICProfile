@@ -1,12 +1,13 @@
 import type { Principal } from '@dfinity/principal';
 export type AssocList = [] | [[[Key, string], List]];
 export interface Bio {
-  'nickName' : [] | [string],
-  'about' : [] | [string],
+  'nickName' : string,
+  'about' : string,
   'socialAccounts' : [] | [Trie],
-  'imageUrl' : [] | [string],
-  'location' : [] | [string],
+  'imageUrl' : string,
+  'location' : string,
 }
+
 export interface Branch { 'left' : Trie, 'size' : bigint, 'right' : Trie }
 export type Error = { 'NotFound' : null } |
   { 'NotAuthorized' : null } |
