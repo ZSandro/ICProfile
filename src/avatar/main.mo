@@ -7,10 +7,13 @@ import Principal "mo:base/Principal";
 actor Avatar {
     type Bio = {
         nickName: ?Text;
-        imageUrl: ?Text;
         location: ?Text;
         about: ?Text;
         socialAccounts:?Trie.Trie<Text,Text>;
+        cateSubAccounts1:?Trie.Trie<Text,Text>;
+        cateSubAccounts2:?Trie.Trie<Text,Text>;
+        cateSubAccounts3:?Trie.Trie<Text,Text>;
+        cateSubAccounts4:?Trie.Trie<Text,Text>;
     };
 
     type Profile = {
