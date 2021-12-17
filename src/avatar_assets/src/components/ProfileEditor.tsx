@@ -40,31 +40,42 @@ const ProfileEditor = (props: Props) => {
           url: testUrl
       }
   ]
+
+  const socialItems = [
+    {
+      icon: './assets/instagram_icon.svg'
+    },
+    {
+      icon: './assets/twritter_icon.svg'
+    },
+    {
+      icon: './assets/facebook_icon.svg'
+    },
+  ]
   const data = [
   {
     id: 0,
-    url: testUrl,
+    url: './assets/user_icon.svg',
     title: '基础信息',
   },
   {
     id: 1,
-    url: testUrl,
+    url: 'assets/btc_icon.svg',
     title: 'NFT橱柜',
   },
 ];
 
   function generateModuleItems() {
-        const viewList =  items.map(
+        const viewList =  socialItems.map(
                 (item) => (
                     <Col span={6}>
                         <div className="editor_modal_item">
                         <Image
                             preview={false}
-                            width={60}
-                            height={60}
-                            src={item.url}
+                            width={48}
+                            height={68}
+                            src={item.icon}
                         />
-                        <p>{item.title}</p>
                         </div>
                     </Col>
                 )
@@ -72,37 +83,74 @@ const ProfileEditor = (props: Props) => {
         return viewList;
   }
 
+  const create_module_sytle: React.CSSProperties = {
+    'display': 'flex',
+    'alignItems': 'flex-start',
+    'padding': '40px 24px',
+    'margin': '0px 0px 0px 0px',
+
+    'position': 'relative',
+    'width': '448px',
+    'height': '246px',
+
+    'background': '#FFFFFF',
+    'borderRadius': '16px'
+  };
+
   return (
       
     <div className="editor_body">
-        <Button className="editor_add_btn" type="primary" shape="round" size="large" 
+        <Button className="editor_add_btn" type="primary" shape="round" size="large"
             block onClick={showModal}>
           Add New Block
         </Button>
         <List
-        itemLayout="horizontal"
-        dataSource={data}
-        split={false}
-        renderItem={item => (
-        <List.Item onClick={() => handleItemClick(item.id!)}>
-            <div className="editor_home_list_item">
-                <Avatar src="https://joeschmoe.io/api/v1/random" />
-                <p>{item.title}</p>
-            </div>
-        </List.Item>
-    )}
-  />
-        <Modal
-            title="创建模块"
-            visible={visible}
-            onOk={handleOk}
-            width={700}
-            onCancel={handleCancel}>
-            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} justify="start">
-                { generateModuleItems() }
-            </Row>    
+          itemLayout="horizontal"
+          dataSource={data}
+          split={false}
+          renderItem={item => (
+          <List.Item onClick={() => handleItemClick(item.id!)}>
+              <div className="editor_home_list_item">
+                  <div className="editor_home_list_item_box">
+                    <div className="editor_home_list_item_box_avatar">
+                      <Avatar className="editor_home_list_item_box_avatar_icon" src={item.url} />
+                    </div>
+                    <p className="editor_home_list_item_box_text">{item.title}</p>
+                  </div>
+                <div className="editor_home_list_item_arrow_box">
+                  <img src="./assets/rightarrow.svg"></img>
+                </div>
+              </div>
+          </List.Item>
+          )}
+        />
 
-      </Modal>
+
+          <Modal
+              bodyStyle={create_module_sytle}
+              visible={visible}
+              footer={null}
+              closable={false}
+              onOk={handleOk}
+              width={448}
+              centered={true}
+              onCancel={handleCancel}>
+                <div>
+                    <div className="create_module_text_box">
+                          Create blocks for your page
+                    </div>
+                    <div className="create_module_social_media_box">
+                        <div className="create_module_social_media_text ">
+                          Social Media
+                        </div>
+                        <div className="create_module_social_icon_box">
+                            <Row gutter={[80, 0]} justify="start">
+                                { generateModuleItems() }
+                            </Row>    
+                        </div>
+                    </div>
+                </div>
+          </Modal>
     </div>
   );
 };
