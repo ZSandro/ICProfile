@@ -4,30 +4,36 @@ body {
     padding: 0;
     margin: 0;
 }
+
 .ant-layout-header,
 .ant-layout-footer {
-  color: #fff;
-  background: #7dbcea;
+    color: #fff;
+    background: #7dbcea;
 }
+
 .ant-layout-footer {
-  line-height: 1.5;
+    line-height: 1.5;
 }
+
 .ant-layout-sider {
-  color: #fff;
-  height: 1000px;
-  background: #3ba0e9;
+    color: #fff;
+    height: 1000px;
+    background: #3ba0e9;
 }
+
 .ant-layout-content {
-  min-height: 120px;
-  color: #fff;
-  height: 1000px;
-  background:white;
+    min-height: 120px;
+    color: #fff;
+    height: 1000px;
+    background: white;
 }
+
 .header-container {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
+
 .side_operation {
     width: 90px;
     background: red;
@@ -36,20 +42,27 @@ body {
     justify-content: flex-start;
     align-items: center;
 }
+
 .side_op_item {
     background: coral;
 }
+
 .editor_body {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .editor_add_btn {
-    background: coral;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    background: linear-gradient(88.8deg, #0263FF 16.38%, #37EAFF 98.64%);
+    margin-top: 32px;
+    margin-left: 24.5px;
+    margin-right: 24.5px !important;
+    margin-bottom: 64px;
+    height: 65px !important;
+    width: 317px;
 }
+
 .editor_home_list_item {
     background: white;
     display: flex;
@@ -60,6 +73,7 @@ body {
     border-radius: 8px;
     box-shadow: 1px 1px 1px 0 black;
 }
+
 .editor_modal_item {
     background: white;
     display: flex;
@@ -70,12 +84,14 @@ body {
     border-radius: 8px;
     box-shadow: 1px 1px 1px 1px gray;
 }
+
 .editor_common_item_module {
     background: white;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
+
 .preview_header {
     display: flex;
     flex-direction: row;
@@ -85,18 +101,21 @@ body {
     width: 100%;
     box-shadow: 0px 1px 0px 0px gray;
 }
+
 .preview_publish {
     position: absolute;
     right: 0px;
     font-size: 1.1em;
     text-align: center;
 }
+
 .preview_page {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .preview_page_phone {
     margin-top: 10%;
     width: 300px;
@@ -105,31 +124,36 @@ body {
     border-radius: 8px;
     box-shadow: 1px 1px 1px 1px gray;
 }
+
 .profile_content {
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 2%;
 }
+
 .profile_name {
     font-size: 1.1em;
     color: tomato;
     margin-top: 10px;
 }
+
 .profile_about {
     font-size: 1em;
     color: tomato;
     margin-top: 10px;
 }
+
 .profile_nft_title {
     font-size: 1.1em;
     color: black;
     margin-top: 10px;
 }
+
 .logout {
     position: absolute;
     right: 0px;
     background: chartreuse;
-    font-size:1.1em;
+    font-size: 1.1em;
     text-align: center;
 }
 
