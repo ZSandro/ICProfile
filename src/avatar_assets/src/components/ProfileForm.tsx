@@ -35,9 +35,11 @@ class ProfileForm extends React.Component<Props> {
     //TODO 做一下值是否变化的判断，再进行更新
     if (this.mRealProfile) {
         switch(key) {
-          case "about": this.mRealProfile.bio.about = [value]
-          case "nickName": this.mRealProfile.bio.nickName = [value]
-          case "location": this.mRealProfile.bio.location = [value]
+
+          case "about": this.mRealProfile.bio.about = [value]; break;
+          case "nickName": this.mRealProfile.bio.nickName = [value]; break;
+          case "location": this.mRealProfile.bio.location = [value]; break;
+
         }
     }
     this.props.submitCallback(this.mRealProfile)

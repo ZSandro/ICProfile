@@ -120,6 +120,11 @@ body {
     color: tomato;
     margin-top: 10px;
 }
+.profile_nft_title {
+    font-size: 1.1em;
+    color: black;
+    margin-top: 10px;
+}
 .logout {
     position: absolute;
     right: 0px;

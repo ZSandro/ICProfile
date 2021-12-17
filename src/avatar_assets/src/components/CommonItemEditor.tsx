@@ -62,8 +62,8 @@ const CommonItemEditor = (props: Props) => {
       onBack={props.onBack}
       title="NFT橱柜"
     />
-    <Input placeholder="输入标题"></Input>
-    <Input placeholder="添加链接"></Input>
+    <Input placeholder="输入合同地址"></Input>
+    <Input placeholder="输入ETH地址"></Input>
     <Button value="large" type="primary" shape="round" onClick={props.onBack} block>保存</Button>
     <p>展示具体要呈现的内容</p>
     </div>
