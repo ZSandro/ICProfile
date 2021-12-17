@@ -26,18 +26,57 @@ body {
 .header-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    padding: 8px 24px;
+    /* position: absolute; */
+    width: 100%;
+    height: 60px;
+    left: 0px;
+    top: 0px; 
+
+    background: #FFFFFF;
 }
 .side_operation {
-    width: 90px;
-    background: red;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
+    padding: 32px 16px;
+
+    /* position: absolute; */
+    width: 60px;
+    height: 1000px;
+    left: 0px;
+    top: 0px;
+
+    background: #F7F7F7;
 }
 .side_op_item {
-    background: coral;
+    position: static;
+    width: 38px;
+    height: 18px;
+    left: 10px;
+    top: 50px;
+
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 153.34%;
+    /* or 18px */
+
+
+    color: #1D60CC;
+
+    opacity: 0.6;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin-top: 3px;
+    margin-bottom: 25px;
 }
 .editor_body {
     display: flex;
@@ -126,11 +165,34 @@ body {
     margin-top: 10px;
 }
 .logout {
-    position: absolute;
-    right: 0px;
-    background: chartreuse;
-    font-size:1.1em;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    /* padding: 8px 24px; */
+    width: 87px;
+    height: 30px;
+    left: 0px;
+    top: 0px;
+
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    border-radius: 32px;
+    }
+
+.information {
+    position: inherit;
+    right: -550px;
+    top: 0px;
+    height: 64px;
+    width: 16px;
+    }
+
+.logo {
+    position: inherit;
+    width: 100px;
+    height: 40px;
+    left: -18px;
+    top: 0px;
 }
 
 img {
