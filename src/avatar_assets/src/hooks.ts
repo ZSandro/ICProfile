@@ -88,10 +88,14 @@ export function useProfile(props: UseProfileProps) {
 export const emptyProfile: ProfileUpdate = {
   image: [],
   bio: {
-    nickName: "Jensen",
-    about: "This is a test profile",
+    nickName: ["Jensen"],
+    about: ["This is a test profile"],
     socialAccounts: [], 
-    imageUrl: "https://joeschmoe.io/api/v1/random", 
-    location: "Beijing",
+    imageUrl: ["https://joeschmoe.io/api/v1/random"], 
+    location: ["Beijing"],
+    cateSubAccounts1: [], 
+    cateSubAccounts2: [], 
+    cateSubAccounts3: [], 
+    cateSubAccounts4: []
   },
 };

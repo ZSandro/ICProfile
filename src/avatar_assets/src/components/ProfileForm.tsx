@@ -35,9 +35,9 @@ class ProfileForm extends React.Component<Props> {
     //TODO 做一下值是否变化的判断，再进行更新
     if (this.mRealProfile) {
         switch(key) {
-          case "about": this.mRealProfile.bio.about = value; break;
-          case "nickName": this.mRealProfile.bio.nickName = value; break;
-          case "location": this.mRealProfile.bio.location = value; break;
+          case "about": this.mRealProfile.bio.about[0] = value; break;
+          case "nickName": this.mRealProfile.bio.nickName[0] = value; break;
+          case "location": this.mRealProfile.bio.location[0] = value; break;
         }
     }
     this.props.submitCallback(this.mRealProfile)
@@ -60,7 +60,7 @@ class ProfileForm extends React.Component<Props> {
       <section>
         <ProfileUpload
           onChange={handleImage}
-          defaultImage={this.props.profile?.bio.imageUrl}
+          defaultImage={this.props.profile?.bio.imageUrl[0]}
         />
         <Form
           name="basic"
@@ -90,8 +90,8 @@ class ProfileForm extends React.Component<Props> {
               },
             ]}
           >
-            <Input value={this.props.profile?.bio.nickName||""} 
-            defaultValue={this.props.profile?.bio.nickName}
+            <Input value={this.props.profile?.bio.nickName[0]||""} 
+            defaultValue={this.props.profile?.bio.nickName[0]}
             onChange={(value) => handleChange("nickName", value.target.value)} 
             />
             
@@ -107,8 +107,8 @@ class ProfileForm extends React.Component<Props> {
               },
             ]}
           >
-            <Input value={this.props.profile?.bio.location} 
-            defaultValue={this.props.profile?.bio.location}
+            <Input value={this.props.profile?.bio.location[0]} 
+            defaultValue={this.props.profile?.bio.location[0]}
             onChange={(value) => handleChange("location", value.target.value)} 
             />
           </Form.Item>
@@ -123,8 +123,8 @@ class ProfileForm extends React.Component<Props> {
               },
             ]}
           >
-           <Input value={this.props.profile?.bio.about} 
-           defaultValue={this.props.profile?.bio.about}
+           <Input value={this.props.profile?.bio.about[0]} 
+           defaultValue={this.props.profile?.bio.about[0]}
             onChange={(value) => handleChange("about", value.target.value)} 
             />
           </Form.Item>
