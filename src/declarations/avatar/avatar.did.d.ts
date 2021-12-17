@@ -1,15 +1,15 @@
 import type { Principal } from '@dfinity/principal';
 export type AssocList = [] | [[[Key, string], List]];
 export interface Bio {
-  'nickName'? : [] | [string],
-  'about'? : [] | [string],
-  'socialAccounts'? : [] | [Trie],
-  'cateSubAccounts1'? : [] | [Trie],
-  'cateSubAccounts2'? : [] | [Trie],
-  'cateSubAccounts3'? : [] | [Trie],
-  'cateSubAccounts4'? : [] | [Trie],
-  'location'? : [] | [string],
+  'nickName' : [] | [string],
+  'about' : [] | [string],
+  'socialAccounts' : [] | [Trie],
   'imageUrl' : [] | [string],
+  'cateSubAccounts1' : [] | [Trie],
+  'cateSubAccounts2' : [] | [Trie],
+  'cateSubAccounts3' : [] | [Trie],
+  'cateSubAccounts4' : [] | [Trie],
+  'location' : [] | [string],
 }
 export interface Branch { 'left' : Trie, 'size' : bigint, 'right' : Trie }
 export type Error = { 'NotFound' : null } |

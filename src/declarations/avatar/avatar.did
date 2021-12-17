@@ -63,6 +63,7 @@ type Bio =
    cateSubAccounts2: opt Trie;
    cateSubAccounts3: opt Trie;
    cateSubAccounts4: opt Trie;
+   imageUrl: opt text;
    location: opt text;
    nickName: opt text;
    socialAccounts: opt Trie;

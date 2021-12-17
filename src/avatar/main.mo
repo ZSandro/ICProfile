@@ -9,6 +9,7 @@ actor Avatar {
         nickName: ?Text;
         location: ?Text;
         about: ?Text;
+        imageUrl: ?Text;
         socialAccounts:?Trie.Trie<Text,Text>;
         cateSubAccounts1:?Trie.Trie<Text,Text>;
         cateSubAccounts2:?Trie.Trie<Text,Text>;

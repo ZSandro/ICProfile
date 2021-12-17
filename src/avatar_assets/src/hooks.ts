@@ -95,5 +95,9 @@ export const emptyProfile: ProfileUpdate = {
     socialAccounts: [], 
     imageUrl: ["https://joeschmoe.io/api/v1/random"], 
     location: ["Beijing"],
+    cateSubAccounts1: [], 
+    cateSubAccounts2: [], 
+    cateSubAccounts3: [], 
+    cateSubAccounts4: []
   },
 };

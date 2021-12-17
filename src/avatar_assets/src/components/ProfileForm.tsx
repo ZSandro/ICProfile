@@ -38,11 +38,9 @@ class ProfileForm extends React.Component<Props> {
     //TODO 做一下值是否变化的判断，再进行更新
     if (this.mRealProfile) {
         switch(key) {
-
-          case "about": this.mRealProfile.bio.about = [value]; break;
-          case "nickName": this.mRealProfile.bio.nickName = [value]; break;
-          case "location": this.mRealProfile.bio.location = [value]; break;
-
+          case "about": this.mRealProfile.bio.about[0] = value; break;
+          case "nickName": this.mRealProfile.bio.nickName[0] = value; break;
+          case "location": this.mRealProfile.bio.location[0] = value; break;
         }
     }
     this.props.submitCallback(this.mRealProfile)
@@ -75,7 +73,6 @@ class ProfileForm extends React.Component<Props> {
         <p className="editor_profile_tips">Name</p>
         <TextArea
         className="editor_profile_Name_style"
-
           onChange={(value) => handleChange("nickName", value.target.value)} 
           bordered={false}
         />

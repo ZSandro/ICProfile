@@ -18,6 +18,7 @@ export const idlFactory = ({ IDL }) => {
     'nickName' : IDL.Opt(IDL.Text),
     'about' : IDL.Opt(IDL.Text),
     'socialAccounts' : IDL.Opt(Trie),
+    'imageUrl' : IDL.Opt(IDL.Text),
     'cateSubAccounts1' : IDL.Opt(Trie),
     'cateSubAccounts2' : IDL.Opt(Trie),
     'cateSubAccounts3' : IDL.Opt(Trie),
