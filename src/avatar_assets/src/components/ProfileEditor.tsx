@@ -36,17 +36,7 @@ const ProfileEditor = (props: Props) => {
       },
       {
           id: 1,
-          title: 'Twitter',
-          url: testUrl
-      },
-      {
-          id: 2,
-          title: 'Facebook',
-          url: testUrl
-      },
-    {
-          id: 3,
-          title: 'LinkedIn',
+          title: 'NFT橱窗',
           url: testUrl
       }
   ]
@@ -59,14 +49,6 @@ const ProfileEditor = (props: Props) => {
   {
     id: 1,
     url: testUrl,
-    title: '比特币钱包',
-  },
-  {
-    id: 2,
-    title: 'Mirror',
-  },
-  {
-    id: 2,
     title: 'NFT橱柜',
   },
 ];

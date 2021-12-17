@@ -1,13 +1,10 @@
-import { Avatar } from 'antd';
+import { Avatar, Image } from 'antd';
 
-import { ActorSubclass } from "@dfinity/agent";
 import React from "react";
 import {
-  Bio,
   ProfileUpdate,
   _SERVICE,
 } from "../../../declarations/avatar/avatar.did";
-import { emptyProfile } from "../hooks";
 import { GithubOutlined } from '@ant-design/icons'
 
 interface Props {
@@ -48,6 +45,8 @@ class Profile extends React.Component<Props> {
                 <p className="profile_about">{this.props.profile?.bio.about}</p>
                 <p className="profile_about">nickname:{this.props.profile?.bio.location}</p>
                 <GithubOutlined />
+                <p className="profile_nft_title">我的NFT橱柜</p>
+                <Image preview={false} src="https://p3.itc.cn/q_70/images03/20210813/ca7c127495b242dea4fc8cc552c4bcc1.png" width={250} height={100}></Image>
             </div>
         );
     }
