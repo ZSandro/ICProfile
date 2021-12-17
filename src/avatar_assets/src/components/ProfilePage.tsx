@@ -1,4 +1,4 @@
-import { Radio, Button, Image, Descriptions } from 'antd';
+import { Radio, Button, Modal } from 'antd';
 
 import { ActorSubclass } from "@dfinity/agent";
 import Profile from "./Profile"
@@ -9,6 +9,7 @@ import {
   _SERVICE,
 } from "../../../declarations/avatar/avatar.did";
 import { emptyProfile } from "../hooks";
+import { AppleOutlined } from '@ant-design/icons';
 
 interface Props {
   profile?: ProfileUpdate;
@@ -18,7 +19,7 @@ interface Props {
 }
 
 class ProfilePage extends React.Component<Props> {
-  state = { isPhone: false };
+  state = { isPhone: false, visible: false };
 
   formRef = React.createRef();
   constructor(props: Props) {
@@ -27,33 +28,48 @@ class ProfilePage extends React.Component<Props> {
 
   changeValue() {
     let result = this.state.isPhone
-    this.setState({isPhone: !result})
+    this.setState({ isPhone: !result })
   }
 
-  componentWillReceiveProps() {
-    console.log("Data recice")
+  publish() {
+    this.setState({ visible: true });
   }
 
-render() {
-  const changeState = this.changeValue.bind(this)
-  return (
+  handleOk() {
+    this.setState({ visible: false })
+  }
+
+  render() {
+    const changeState = this.changeValue.bind(this)
+    const publish = this.publish.bind(this)
+    const handleOk = this.handleOk.bind(this)
+    return (
       <div className="preview_page">
         <div className="preview_header">
           <Radio.Group defaultValue="a" buttonStyle="solid" onChange={changeState}>
             <Radio.Button value="a">电脑</Radio.Button>
             <Radio.Button value="b">手机</Radio.Button>
           </Radio.Group>
-          <Button type="primary" shape="round" className="preview_publish">发布</Button>
+          <Button type="text" shape="round" className="preview_publish" onClick={publish}>Publish</Button>
         </div>
-        {(this.state.isPhone)? (<div className="preview_page_phone"> 
-                    <Profile profile={this.props.profile}></Profile>
-        </div>): (
-            <Profile profile={this.props.profile}></Profile>
+        {(this.state.isPhone) ? (<div className="preview_page_phone">
+          <Profile profile={this.props.profile}></Profile>
+        </div>) : (
+          <Profile profile={this.props.profile}></Profile>
         )
         }
-      </div>  
-  );
-}
+        <Modal
+          title="复制分享给你的好友"
+          visible={this.state.visible}
+          onOk={handleOk}
+          onCancel={handleOk}
+          width={700}>
+          <p>https://www.baidu.com</p>
+
+        </Modal>
+      </div>
+    );
+  }
 }
 
 export default ProfilePage;

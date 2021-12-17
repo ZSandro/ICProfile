@@ -33,19 +33,77 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: flex-start;
+    padding: 8px 24px;
+    width: 100%;
+    height: 60px;
+    background: #FFFFFF;
 }
 
-.side_operation {
-    width: 90px;
-    background: red;
+.header-right-zone {
+    margin-left: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
     align-items: center;
 }
 
+.header-logout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 87px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    border-radius: 32px;
+}
+
+.header-information {
+    height: 64px;
+    width: 16px;
+    margin-right: 20px;
+}
+
+.header-logo {
+    position: inherit;
+    width: 100px;
+    height: 40px;
+    left: -15px;
+}
+
+.side_operation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+    /* position: absolute; */
+    width: 60px;
+    height: 1000px;
+    left: 0px;
+    top: 0px;
+    background: #F7F7F7;
+}
+
 .side_op_item {
-    background: coral;
+    position: static;
+    width: 38px;
+    height: 18px;
+    left: 10px;
+    top: 50px;
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 153.34%;
+    /* or 18px */
+    color: #1D60CC;
+    opacity: 0.6;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin-top: 3px;
+    margin-bottom: 25px;
 }
 
 .editor_body {
@@ -273,16 +331,28 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: 72px;
+    height: 57px;
     width: 100%;
-    box-shadow: 0px 1px 0px 0px gray;
+    background-color: #F6F6F6;
 }
 
 .preview_publish {
     position: absolute;
-    right: 0px;
-    font-size: 1.1em;
+    right: 24px;
+    font-size: 16px;
     text-align: center;
+    color: #111111;
+    border-radius: 20px !important;
+    height: 33px !important;
+    background: linear-gradient(to right, #FFB72D, #FDC189);
+}
+
+.preview_publish:hover {
+    background: linear-gradient(to right, #FFB72D, #FDC189);
+}
+
+.preview_publish:focus {
+    background: linear-gradient(to right, #FFB72D, #FDC189);
 }
 
 .preview_page {
@@ -290,47 +360,134 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 1000px;
 }
 
 .preview_page_phone {
     margin-top: 10%;
     width: 300px;
     height: 540px;
-    background: wheat;
     border-radius: 8px;
     box-shadow: 1px 1px 1px 1px gray;
 }
 
 .profile_content {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 2%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #0148FF, #34DAFF);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile_avatar_zone {
+    margin-top: 70px;
+}
+
+.profile_avatar {
+    margin-top: -100px;
+    margin-left: 5px;
+    overflow: hidden;
+}
+
+.profile_avatar_bg {
+    background-color: white;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
 }
 
 .profile_name {
-    font-size: 1.1em;
-    color: tomato;
-    margin-top: 10px;
+    color: white;
+    padding: 0px;
+    margin-top: -20px;
+    margin-bottom: 0px;
+    /* width: 120px;
+    height: 24px;
+    left: 146px;
+    top: 92px; */
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
 }
 
 .profile_about {
-    font-size: 1em;
-    color: tomato;
-    margin-top: 10px;
+    font-size: 20px;
+    color: white;
+    margin-top: 12px;
+    margin-bottom: 0px;
+    position: static;
+    /* width: 412px;
+    height: 24px;
+    left: 0px;
+    top: 128px; */
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.profile_location {
+    margin-top: 60px;
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 150.34%;
+    text-align: center;
+    color: #FFFFFF;
 }
 
 .profile_nft_title {
-    font-size: 1.1em;
-    color: black;
-    margin-top: 10px;
+    margin-top: 30px;
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 150.34%;
+    text-align: center;
+    color: #FFFFFF;
 }
 
-.logout {
-    position: absolute;
-    right: 0px;
-    background: chartreuse;
-    font-size: 1.1em;
-    text-align: center;
+.ant-radio-group {
+    /* box-sizing: border-box; */
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    display: inline-block;
+    font-size: 0;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+    border-radius: 10px;
+    overflow: hidden
+}
+
+.ant-radio-button-wrapper {
+    position: relative;
+    display: inline-block;
+    height: 32px;
+    margin: 0;
+    padding: 0 15px;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    line-height: 30px;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-top-width: 1.02px;
+    border-left-width: 0;
+    cursor: pointer;
+    transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 img {
