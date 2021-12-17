@@ -13,7 +13,7 @@ function Home() {
   return (
     <div className="loginBox">
       <Image width={150} height={100} src="../assets/logo.png" preview={false} />
-      <Button  className="loginBtn" type="primary" shape="round" size="small"
+      <Button  className="loginBtn" type="primary" shape="round" size="large"
         block onClick={login}>
         点击登陆
       </Button>

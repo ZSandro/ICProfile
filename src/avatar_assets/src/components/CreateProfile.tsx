@@ -23,11 +23,11 @@ const CreateProfile = (props: Props) => {
     useContext(AppContext);
   const history = useHistory();
   return (
-    <div>
+    <div className="ant-layout-content">
       <PageHeader
         className="site-page-header"
         onBack={props.onBack}
-        title="个人信息"
+        title=" back"
       />,
       <ProfileForm
         submitCallback={props.submitCallback}

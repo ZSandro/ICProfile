@@ -15,7 +15,7 @@ export function useAuthClient(props?: UseAuthClientProps) {
     authClient?.login({
       identityProvider:
         "http://localhost:8000/?canisterId=rwlgt-iiaaa-aaaaa-aaaaa-cai",
-      //identityProvider: process.env.II_URL,
+      // identityProvider: process.env.II_URL,
       onSuccess: () => {
         initActor();
         setIsAuthenticated(true);
@@ -42,7 +42,7 @@ export function useAuthClient(props?: UseAuthClientProps) {
     AuthClient.create().then(async (client) => {
       const isAuthenticated = await client.isAuthenticated();
       setAuthClient(client);
-    //  setIsAuthenticated(true);
+   setIsAuthenticated(true);
     });
   }, []);
 

@@ -8,12 +8,15 @@ import {
 } from "../../../declarations/avatar/avatar.did";
 import { emptyProfile } from "../hooks";
 import ProfileUpload from "./ProfileUpload";
+import ProfileSelectIcon from "./ProfileSelectIcon";
+import ColorFill from "@spectrum-icons/workflow/ColorFill";
 
 interface Props {
   profile?: ProfileUpdate;
   submitCallback: (profile?: ProfileUpdate) => void;
   actor?: ActorSubclass<_SERVICE>;
 }
+const { TextArea } = Input;
 
 class ProfileForm extends React.Component<Props> {
   state = { profile: emptyProfile };
@@ -60,89 +63,37 @@ class ProfileForm extends React.Component<Props> {
     const handleImage = this.handleImage.bind(this);
     return (
       <section>
-        <ProfileUpload
-          onChange={handleImage}
-          defaultImage={this.props.profile?.bio.imageUrl[0]}
-        />
-        <Form
-          name="basic"
-          labelCol={{
-            span: 8,
-          }}
-          wrapperCol={{
-            span: 16,
-          }}
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={() => {
-            //e.preventDefault();
-            handleSubmit();
-          }}
-          // onFinishFailed={onFinishFailed}
-          autoComplete="off"
-        >
-          <Form.Item
-            label="nickName"
-            name="nickName"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your nickName!',
-              },
-            ]}
-          >
-            <Input value={this.props.profile?.bio.nickName||""} 
-            defaultValue={this.props.profile?.bio.nickName}
-            onChange={(value) => handleChange("nickName", value.target.value)} 
-            />
-            
-          </Form.Item>
-
-          <Form.Item
-            label="location"
-            name="location"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your location!',
-              },
-            ]}
-          >
-            <Input value={this.props.profile?.bio.location} 
-            defaultValue={this.props.profile?.bio.location}
-            onChange={(value) => handleChange("location", value.target.value)} 
-            />
-          </Form.Item>
-
-          <Form.Item
-            label="About"
-            name="About"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your About!',
-              },
-            ]}
-          >
-           <Input value={this.props.profile?.bio.about} 
-           defaultValue={this.props.profile?.bio.about}
-            onChange={(value) => handleChange("about", value.target.value)} 
-            />
-          </Form.Item>
-
-
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
-            <Button type="primary" htmlType="submit" onClick={handleSubmit}>
+      <div className="center_div_box">
+          <Button type="primary" htmlType="submit" onClick={handleSubmit}>
               Submit
             </Button>
-          </Form.Item>
-        </Form>
+        </div>
+        <ProfileUpload
+          onChange={handleImage}
+          defaultImage="../../assets/avatar_defult.png"
+        />
+        <p className="editor_profile_tips">Name</p>
+        <TextArea
+        className="editor_profile_Name_style"
+
+          onChange={(value) => handleChange("nickName", value.target.value)} 
+          bordered={false}
+        />
+        <p></p>
+
+        <p className="editor_profile_tips">Subheadline</p>
+        <TextArea
+        className="editor_profile_Subheadline_style"
+          onChange={(value) => handleChange("about", value.target.value)} 
+          bordered={false}
+        />
+        
+        <ProfileSelectIcon
+          profile={this.props.profile} 
+          actor={this.props.actor} 
+          submitCallback={this.props.submitCallback}
+        />
+        
       </section>
     );
   }
