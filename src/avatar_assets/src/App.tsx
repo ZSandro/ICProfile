@@ -156,15 +156,11 @@ const App = () => {
           <Route path="/create">
             <Layout>
               <Header className="header-container">
-                <Image className="logo" src="../assets/logo.png" preview={false} />
-                <Image className="information" src="../assets/Information.svg" />
-                <Route path="/manage">
-                  <Button type="text" className="logout" onClick={logout}>Log out</Button>
-                </Route>
-                <Route path="/create">
-                  <Button type="text" className="logout" onClick={logout}>Log out</Button>
-                </Route>
-
+                    <Image className="header-logo" src="../assets/logo.png" preview={false} />
+                    <div className="header-right-zone">
+                    <Image className="header-information" src="../assets/Information.svg" preview={false}/>
+                    <Button type="text" className="header-logout" onClick={logout}>Log out</Button>
+                    </div>
               </Header>
               <Layout>
                 <Sider width={80} className="side_operation">
