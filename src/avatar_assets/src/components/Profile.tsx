@@ -32,18 +32,20 @@ class Profile extends React.Component<Props> {
     render() {
         return (
             <div className="profile_content">
-                <Avatar
+                <div className="profile_avatar_zone">   
+                <div className="profile_avatar_bg"></div> 
+                <Avatar className="profile_avatar"
                     size={{
-                        xs: 24,
-                        sm: 32,
-                        md: 40,
-                        lg: 64,
+                        xs: 80,
+                        sm: 80,
+                        md: 80,
+                        lg: 80,
                         xl: 80,
-                        xxl: 100,
+                        xxl: 80,
                     }} src={this.props.profile?.bio.imageUrl[0]} />
+                </div>
                 <p className="profile_name">{this.props.profile?.bio.nickName[0]}</p>
                 <p className="profile_about">{this.props.profile?.bio.about[0]}</p>
-                <p className="profile_about">nickname:{this.props.profile?.bio.location[0]}</p>
                 <GithubOutlined />
                 <p className="profile_nft_title">我的NFT橱柜</p>
                 <Image preview={false} src="https://p3.itc.cn/q_70/images03/20210813/ca7c127495b242dea4fc8cc552c4bcc1.png" width={250} height={100}></Image>
