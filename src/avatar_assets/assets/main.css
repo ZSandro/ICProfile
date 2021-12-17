@@ -522,3 +522,104 @@ form {
 #greeting:empty {
     display: none;
 }
+
+.loginBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginBtn {
+    
+    width: 50vw;
+    height: 25vw;
+
+}
+
+.editor_avatar_defult {
+    width: 80px;
+    height: 80px;
+    text-align: center;
+}
+
+
+.center_div_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.editor_profile_tips {
+    font-size: 12px;
+    font-weight: 600;
+    color: #111111;
+    margin-left: 24px
+}
+
+.editor_profile_Name_style {
+    margin-left: 24px;
+    margin-right: 24px;
+    background: #1111110A;
+    height: 40px;
+    border-radius: 8px
+}
+
+
+.editor_profile_Subheadline_style {
+    margin-left: 24px;
+    margin-right: 24px;
+    background: #1111110A;
+    height: 80px;
+    border-radius: 8px
+}
+
+.editor_profile_Subtitle_style {
+    position: static;
+    height: 58px;
+    font-family: "SF Pro Display";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: #0263FF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin-top: 28px;
+    margin-left: 24px;
+}
+
+.editor_selectIcon_box {
+    width: 100%;
+    height: 40px;
+    margin-left: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-direction;
+    align-items: margin-left;
+}
+
+.editor_selectIcon_first_style {
+    display: center;
+    border: 1px solid var(--spectrum-alias-text-color);
+    height: 40px;
+    width: 40px;
+    margin-left: 0px;
+    padding: 0;
+    position: center;
+}
+.editor_selectIcon_style {
+    display: center;
+    border: 1px solid var(--spectrum-alias-text-color);
+    height: 40px;
+    width: 40px;
+    margin-left: 40px;
+    padding: 0;
+    position: center;
+}
+.editor_selectIconImage_style {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+}

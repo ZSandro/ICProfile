@@ -4,15 +4,17 @@ import React from "react";
 import { createRef } from "react";
 import styled from "styled-components";
 import { resizeImage } from "../resize";
+import { Avatar,  Row, Image } from 'antd';
 
 interface Props {
   defaultImage?: string;
   onChange: (value: string) => void;
 }
 
-const imageSize = 200;
+const imageSize = 80;
 
 const Button = styled.button`
+  display: center;
   border: 1px solid var(--spectrum-alias-text-color);
   height: ${imageSize}px;
   width: ${imageSize}px;
@@ -20,7 +22,7 @@ const Button = styled.button`
   margin: auto;
   border-radius: 100%;
   padding: 0;
-  position: relative;
+  position: center;
 
   picture {
     width: 100%;
@@ -51,6 +53,7 @@ const Button = styled.button`
     display: none;
   }
 `;
+
 
 function ProfileUpload(props: Props) {
   const { defaultImage, onChange } = props;
@@ -89,7 +92,7 @@ function ProfileUpload(props: Props) {
   const displayImage = image || defaultImage;
 
   return (
-    <>
+    <div className="center_div_box">
       <Button onClick={handleClick} type="button">
         <picture>
           {displayImage ? <img src={displayImage} /> : <User />}
@@ -102,7 +105,7 @@ function ProfileUpload(props: Props) {
           accept="image/*"
         />
       </Button>
-    </>
+    </div>
   );
 }
 

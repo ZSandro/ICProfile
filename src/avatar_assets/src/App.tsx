@@ -137,7 +137,6 @@ const App = () => {
           <RedirectManager />
           <Route path="/login">
             <Home />
-            <NotAuthenticated />
           </Route>
           <Route path="/user">
             <Profile profile={profile} />
