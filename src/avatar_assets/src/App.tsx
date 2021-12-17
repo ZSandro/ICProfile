@@ -16,12 +16,12 @@ import CreateProfile from "./components/CreateProfile";
 import ProfileEditor from "./components/ProfileEditor";
 import CommonItemEditor from "./components/CommonItemEditor";
 import ProfilePage from "./components/ProfilePage";
+import Profile from "./components/Profile";
 import { emptyProfile, useAuthClient, useProfile } from "./hooks";
 import { AuthClient } from "@dfinity/auth-client";
 import { ActorSubclass } from "@dfinity/agent";
 import { useEffect } from "react";
 import { clear, remove, set } from "local-storage";
-import { useState } from "react";
 
 import RedirectManager from "./components/RedirectManager";
 import { profilesMatch } from "./utils";
@@ -94,7 +94,6 @@ const submitCallback = async (profile?: ProfileUpdate) => {
     updateProfile(profile)
     let modify = isModify
     setIsModify(!modify)
-    console.log("Data update")
   } else {
     toast.success("Failure");
   }
@@ -147,6 +146,10 @@ const submitCallback = async (profile?: ProfileUpdate) => {
       >
         <Router>
           <RedirectManager />
+          <Route path="/user">
+              <Profile profile={profile}/>
+          </Route>
+          <Route path="/create">   
           <Layout>
             <Header className="header-container">
               <Image width={150} height={100} src="../assets/logo.png" preview={false}/>
@@ -190,6 +193,7 @@ const submitCallback = async (profile?: ProfileUpdate) => {
             </Layout>
             <Footer>Footer</Footer>
           </Layout>
+          </Route>
         </Router>
       </AppContext.Provider>
     </>
