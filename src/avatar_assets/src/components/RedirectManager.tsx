@@ -9,7 +9,6 @@ interface Props {}
 
 function RedirectManager(props: Props) {
   const { isAuthenticated, profile } = useContext(AppContext);
-  console.log(props)
   // Logged out
   if (!isAuthenticated) return <Redirect to="/login" />;
   // Authenticated but no profile

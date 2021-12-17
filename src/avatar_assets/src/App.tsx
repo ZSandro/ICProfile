@@ -7,9 +7,7 @@ import {
   BrowserRouter as Router,
   Redirect,
   Route,
-  Switch,
-  useHistory,
-  withRouter,
+  Switch
 } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import CreateProfile from "./components/CreateProfile";
@@ -28,6 +26,7 @@ import { profilesMatch } from "./utils";
 import { Layout, Button, Row, Image } from 'antd';
 import 'antd/dist/antd.css';
 import '../assets/main.css';
+import { Principal } from "@dfinity/candid/lib/cjs/idl";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -77,6 +76,7 @@ const App = () => {
   useEffect(() => {
     if (history.location.pathname === "/") return;
     if (actor) {
+      
     }
   }, [actor]);
 
@@ -97,29 +97,18 @@ const App = () => {
     } else {
       toast.success("Failure");
     }
-    // set("profile", JSON.stringify(profile));
-    // toast.success(JSON.stringify(profile));
-    // Optimistic update
-    // updateProfile?.(profile);
-    // history.push("/manage");
-
-    // Handle creation and verification async
-    // actor?.create(profile).then(async (createResponse) => {
-    //   if ("ok" in createResponse) {
-    //     // const profileResponse = await actor.read();
-    //     // if ("ok" in profileResponse) {
-    //     //   // Do nothing, we already updated
-    //     // } else {
-    //     //   console.error(profileResponse.err);
-    //     //   handleCreationError();
-    //     // }
-    //   } else {
-    //     handleCreationError();
-    //     remove("ic-delegation");
-    //     console.error(createResponse.err);
-    //   }
-    // });
   };
+
+  const readProfile = {
+    
+  }
+
+  const saveProfileUpdate = async()=> {
+    toast.success(JSON.stringify(profile));
+    actor?.create(profile).then(async (createResponse) => {
+      console.log(createResponse)
+    });
+  }
 
   if (!authClient) return null;
 
@@ -189,12 +178,7 @@ const App = () => {
                         <Home />
                         <NotAuthenticated />
                       </Route>
-                      <Route path="/manage" exact>
-                        <ProfilePage profile={profile} isModify={isModify} />
-                      </Route>
-                      <Route path="/create" exact>
-                        <ProfilePage profile={profile} isModify={isModify} />
-                      </Route>
+                      <ProfilePage profile={profile} isModify={isModify} publish={saveProfileUpdate}/>
                     </Switch>
                   </Row>
                 </Content>

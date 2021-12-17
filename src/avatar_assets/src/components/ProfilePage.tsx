@@ -14,8 +14,8 @@ import { AppleOutlined } from '@ant-design/icons';
 interface Props {
   profile?: ProfileUpdate;
   submitCallback?: (profile: ProfileUpdate) => void;
-  actor?: ActorSubclass<_SERVICE>;
   isModify: Boolean;
+  publish?: ()=>void;
 }
 
 class ProfilePage extends React.Component<Props> {
@@ -33,6 +33,7 @@ class ProfilePage extends React.Component<Props> {
 
   publish() {
     this.setState({ visible: true });
+    this.props.publish
   }
 
   handleOk() {
