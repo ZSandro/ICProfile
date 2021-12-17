@@ -9,6 +9,7 @@ import {
   _SERVICE,
 } from "../../../declarations/avatar/avatar.did";
 import { emptyProfile } from "../hooks";
+import { AppleOutlined } from '@ant-design/icons';
 
 interface Props {
   profile?: ProfileUpdate;
@@ -27,22 +28,22 @@ class ProfilePage extends React.Component<Props> {
 
   changeValue() {
     let result = this.state.isPhone
-    this.setState({isPhone: !result})
+    this.setState({ isPhone: !result })
   }
 
   publish() {
-    this.setState({visible: true});
+    this.setState({ visible: true });
   }
 
- handleOk() {
-   this.setState({visible: false})
+  handleOk() {
+    this.setState({ visible: false })
   }
 
-render() {
-  const changeState = this.changeValue.bind(this)
-  const publish = this.publish.bind(this)
-  const handleOk = this.handleOk.bind(this)
-  return (
+  render() {
+    const changeState = this.changeValue.bind(this)
+    const publish = this.publish.bind(this)
+    const handleOk = this.handleOk.bind(this)
+    return (
       <div className="preview_page">
         <div className="preview_header">
           <Radio.Group defaultValue="a" buttonStyle="solid" onChange={changeState}>
@@ -51,24 +52,24 @@ render() {
           </Radio.Group>
           <Button type="text" shape="round" className="preview_publish" onClick={publish}>Publish</Button>
         </div>
-        {(this.state.isPhone)? (<div className="preview_page_phone"> 
-                    <Profile profile={this.props.profile}></Profile>
-        </div>): (
-            <Profile profile={this.props.profile}></Profile>
+        {(this.state.isPhone) ? (<div className="preview_page_phone">
+          <Profile profile={this.props.profile}></Profile>
+        </div>) : (
+          <Profile profile={this.props.profile}></Profile>
         )
         }
         <Modal
-            title="复制分享给你的好友"
-            visible={this.state.visible}
-            onOk={handleOk}
-            onCancel={handleOk}
-            width={700}>
+          title="复制分享给你的好友"
+          visible={this.state.visible}
+          onOk={handleOk}
+          onCancel={handleOk}
+          width={700}>
           <p>https://www.baidu.com</p>
 
-      </Modal>
-      </div>  
-  );
-}
+        </Modal>
+      </div>
+    );
+  }
 }
 
 export default ProfilePage;

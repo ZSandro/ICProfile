@@ -124,7 +124,7 @@ module.exports = {
     hot: true,
     static: path.resolve(__dirname, "./src/avatar_assets"),
   //  watchContentBase: true,
-    port: 3001,
+    port: 3002,
     historyApiFallback: true,
   },
 };

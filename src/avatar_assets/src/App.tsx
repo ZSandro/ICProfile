@@ -167,7 +167,7 @@ const App = () => {
 
               </Header>
               <Layout>
-                <Sider width={80} className="side_operation">
+                <Sider width={70} className="side_operation">
                   <div>
                     <Image src="../assets/User.svg"></Image>
                     <p className="side_op_item">模板</p>
@@ -177,7 +177,7 @@ const App = () => {
                     <p className="side_op_item">主题</p>
                   </div>
                 </Sider>
-                <Sider width={440}>
+                <Sider width={280}>
                   {isEditing ? (
                     (editingId == 0) ?
                       (<CreateProfile profile={profile} onBack={backMethod} submitCallback={submitCallback} />) :

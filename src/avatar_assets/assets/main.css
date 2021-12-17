@@ -167,34 +167,81 @@ body {
     margin-top: 70px;
 }
 .profile_avatar {
-    margin-top: -115px;
+    margin-top: -100px;
     margin-left: 5px;
     overflow: hidden;
 }
 .profile_avatar_bg {
     background-color: white;
     border-radius: 50%; 
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
 }
 
 .profile_name {
-    font-size: 20px;
     color: white;
     padding: 0px;
-    margin-top: 12px;
+    margin-top: -20px;
     margin-bottom: 0px;
+    /* width: 120px;
+    height: 24px;
+    left: 146px;
+    top: 92px; */
+
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+
+
+    color: #FFFFFF;
+
 }
+
 .profile_about {
     font-size: 20px;
     color: white;
     margin-top: 12px;
     margin-bottom: 0px;
+    position: static;
+    /* width: 412px;
+    height: 24px;
+    left: 0px;
+    top: 128px; */
+
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
 }
+
+.profile_location {
+    margin-top: 60px; 
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 150.34%;
+
+    text-align: center;
+
+    color: #FFFFFF;
+
+}
+
 .profile_nft_title {
-    font-size: 1.1em;
-    color: black;
-    margin-top: 10px;
+    margin-top: 30px; 
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 150.34%;
+
+    text-align: center;
+
+    color: #FFFFFF;
 }
 .logout {
     display: flex;
@@ -226,6 +273,49 @@ body {
     left: -18px;
     top: 0px;
 }
+
+.ant-radio-group {
+    /* box-sizing: border-box; */
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    display: inline-block;
+    font-size: 0;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+
+    border-radius: 10px;
+    overflow:hidden
+}
+
+.ant-radio-button-wrapper {
+  position: relative;
+  display: inline-block;
+  height: 32px;
+  margin: 0;
+  padding: 0 15px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  line-height: 30px;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top-width: 1.02px;
+  border-left-width: 0;
+  cursor: pointer;
+  transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+
+
+
 
 img {
     max-width: 50vw;
