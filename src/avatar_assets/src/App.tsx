@@ -148,7 +148,6 @@ const submitCallback = async (profile?: ProfileUpdate) => {
           <RedirectManager />
           <Route path="/login">
               <Home/>
-              <NotAuthenticated/>
           </Route>
           <Route path="/user">
               <Profile profile={profile}/>

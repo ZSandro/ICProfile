@@ -1,20 +1,23 @@
 import * as React from "react";
 import { _SERVICE } from "../../../declarations/avatar/avatar.did";
 import { useHistory } from "react-router-dom";
+import {Button, Modal, List, Avatar, Image, Row, Col} from 'antd'
+import { AppContext } from "../App";
+import { useContext } from "react";
+
 
 function Home() {
   const history = useHistory();
+  const { isAuthenticated, login, profile } = useContext(AppContext);
 
   return (
-    <section>
-      <h2>Welcome to IC Avatar!</h2>
-      <p>
-        This is an open-source, instructional application, built on the Internet
-        Computer. You can create an Avatar on this site, which is a private
-        profile that you will be able to use to link with other applications and
-        choose what info you want to share.
-      </p>
-    </section>
+    <div className="loginBox">
+      <Image width={150} height={100} src="../assets/logo.png" preview={false} />
+      <Button  className="loginBtn" type="primary" shape="round" size="small"
+        block onClick={login}>
+        点击登陆
+      </Button>
+    </div>
   );
 }
 

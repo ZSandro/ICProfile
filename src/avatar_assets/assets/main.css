@@ -167,3 +167,16 @@ form {
 #greeting:empty {
     display: none;
 }
+
+.loginBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginBtn {
+    
+    width: 50vw;
+    height: 25vw;
+
+}
