@@ -211,20 +211,12 @@ body {
     padding: 0px;
     margin-top: -20px;
     margin-bottom: 0px;
-    /* width: 120px;
-    height: 24px;
-    left: 146px;
-    top: 92px; */
-
     font-family: SF Pro Display;
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
     line-height: 24px;
-
-
     color: #FFFFFF;
-
 }
 
 .profile_about {
@@ -233,11 +225,6 @@ body {
     margin-top: 12px;
     margin-bottom: 0px;
     position: static;
-    /* width: 412px;
-    height: 24px;
-    left: 0px;
-    top: 128px; */
-
     font-family: SF Pro Display;
     font-style: normal;
     font-weight: bold;
@@ -252,11 +239,8 @@ body {
     font-weight: bold;
     font-size: 16px;
     line-height: 150.34%;
-
     text-align: center;
-
     color: #FFFFFF;
-
 }
 
 .profile_nft_title {
